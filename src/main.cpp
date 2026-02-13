@@ -1,18 +1,14 @@
 #include <Arduino.h>
 
-// put function declarations here:
-int myFunction(int, int);
+// define led according to pin diagram in article
+const int led = D10; // there is no LED_BUILTIN available for the XIAO ESP32C3.
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    // initialize digital pin led as an output
+    Serial.begin(9600);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    delay(1000);               // wait for a second
+    Serial.println("Serial Test");
 }
