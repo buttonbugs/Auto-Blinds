@@ -1,15 +1,40 @@
+// Arduino
 #include <Arduino.h>
-#include "secret.h"
 
-// define led according to pin diagram in article
-const int led = D10; // there is no LED_BUILTIN available for the XIAO ESP32C3.
+// Libraries
+// #include <WiFi.h>
+#include <HTTPClient.h>
+#include <esp_wpa2.h>           // Required for Enterprise WiFi
+#include <map>                  // Required for handling headers elegantly
+
+// Your Header Files
+#include "secret.h"             // Your secret file
+#include "wifi_handler.h"       // To handle wifi connection
+#include "url_list.h"           // Place to store URLs
+#include "request_handler.h"    // To handle HTTP requests
 
 void setup() {
-    // initialize digital pin led as an output
     Serial.begin(9600);
+    delay(10000);                // Give serial monitor time to open
+    connect_to_wifi();
 }
 
 void loop() {
-    delay(1000);               // wait for a second
-    Serial.println(SECRET_PASS);
+    // 2. Define your Headers (Notion example)
+    std::map<String, String> notionHeaders;
+    notionHeaders["Authorization"] = "Bearer " + String(NOTION_TOKEN);
+    notionHeaders["Notion-Version"] = "2025-09-03";
+    notionHeaders["Content-Type"] = "application/json";
+
+    // 3. Define your Body (Create a page in a database)
+    // Using raw strings (R"(...)") makes JSON much easier to read in C++
+    String notionBody = R"({
+        "page_size": 100
+    })";
+
+    // 4. Fire the request!
+    sendHttpRequest("POST", String(notion_query_data_sourse_url_p1) + DATA_SOURCE_ID + notion_query_data_sourse_url_p2, notionHeaders, notionBody);
+
+    // Wait 1 minutes
+    delay(60000);
 }
