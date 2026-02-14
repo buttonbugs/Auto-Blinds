@@ -3,5 +3,5 @@ html, body {
     overflow: hidden;
 }
 body {
-    height: 400px;
+    padding: 0;
 }
