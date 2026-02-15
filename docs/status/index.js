@@ -6,7 +6,7 @@ var parameter_list = {}
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
 const width = window.innerWidth
 const middle_x = Math.round(width / 2)
-const BLIND_START = {x: middle_x - 0, y: 140, start_angle: 10}
+const BLIND_START = {x: middle_x - 0, y: 140, angle_offset: 5, length_offset: 5}
 
 // Reset body width
 document.body.style.width = width + "px"
@@ -19,6 +19,10 @@ canvas.id = "myCanvas";
 document.body.appendChild(canvas);
 const ctx = canvas.getContext("2d");
 
+function map(original_value, from_low, from_high, to_low, to_high) {
+    return to_low + (original_value - from_low) * (to_high - to_low) / (from_high - from_low);
+}
+
 function render_default() {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -26,7 +30,8 @@ function render_default() {
 
 function render_blinds() {
     const blind_half_length = (height - BLIND_START.y) / BLIND_NUM / 2;
-    const angle = Math.PI * (parameter_list["angle"] + BLIND_START.start_angle - 90) / 180
+    const stroke_half_length = blind_half_length + BLIND_START.length_offset
+    const angle = Math.PI * map(parameter_list["angle"], 0, 180, BLIND_START.angle_offset - 90, 90 - BLIND_START.angle_offset) / 180
     const x = BLIND_START.x;
     ctx.lineWidth = 2 ;
     ctx.strokeStyle = isDark ? "white" : "#000000";
@@ -36,8 +41,8 @@ function render_blinds() {
     ctx.lineTo(x, BLIND_START.y);
     for (let index = 0; index < BLIND_NUM; index++) {
         const y = BLIND_START.y + blind_half_length * (2 * index + 1);
-        ctx.moveTo(x + blind_half_length * Math.cos(angle), y - blind_half_length * Math.sin(angle));
-        ctx.lineTo(x - blind_half_length * Math.cos(angle), y + blind_half_length * Math.sin(angle));
+        ctx.moveTo(x + stroke_half_length * Math.cos(angle), y - stroke_half_length * Math.sin(angle));
+        ctx.lineTo(x - stroke_half_length * Math.cos(angle), y + stroke_half_length * Math.sin(angle));
     }
     ctx.stroke();
     //
