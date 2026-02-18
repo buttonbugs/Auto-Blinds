@@ -1,6 +1,8 @@
 # Auto-Blinds
 
-**Board:** [Seeed Studio XIAO-ESP32-C3](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/)
+**Board:** Seeed Studio XIAO-ESP32-C3
+- [Wiki](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/)
+- [Amazon](https://www.amazon.com/gp/product/B0B94JZ2YF/)
 
 **Framework:** Arduino
 
