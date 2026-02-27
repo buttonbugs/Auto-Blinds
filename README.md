@@ -64,7 +64,7 @@ where:
 
 Therefore,
 
-$$\delta=-\sin{\\,\lambda}\\,\sin{\\,\varepsilon}$$
+$$\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
 
 ### References
 
