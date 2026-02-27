@@ -9,7 +9,7 @@
 **Visual Studio Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
 ## Preview (Manual Mode)
-<!-- <img src="README/preview_1.gif" alt="Preiew"/> -->
+<img src="README/preview_1.gif" alt="Preiew"/>
 
 ## Analemma Calculation
 
