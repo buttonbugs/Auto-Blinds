@@ -50,6 +50,7 @@ $$
 \end{aligned}
 $$
 
+### References
 
 [^1]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
 
