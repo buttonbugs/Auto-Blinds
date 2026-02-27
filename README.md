@@ -8,5 +8,19 @@
 
 **Visual Studio Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
-## Preview
-<img src="README/preview_1.gif" alt="Preiew"/>
+## Preview (Manual Mode)
+<!-- <img src="README/preview_1.gif" alt="Preiew"/> -->
+
+## Analemma Calculation
+
+### 1. Subsolar point
+
+**Coordinate system:** ecliptic coordinate system [^1]
+
+ecliptic longitude
+
+
+
+## References
+
+[^1] “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
