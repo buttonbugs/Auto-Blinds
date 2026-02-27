@@ -50,6 +50,22 @@ $$
 \end{aligned}
 $$
 
+where:
+
+- ${\hat{r}}_{SE}$ is the unit vector pointing from the Sun to Earth in the ecliptic coordinate system
+
+- ${\hat{N}}_{\bigoplus{,ecl}}$ is the unit vector pointing toward the north celestial pole in the ecliptic coordinate system
+
+- $\delta$ is the longitude of the subsolar point
+
+- $\lambda$ is the ecliptic longitude of Earth [^1]
+
+- $\varepsilon$ is the obliquity of Earth
+
+Therefore,
+
+$$\delta=-\sin{\\,\lambda}\\,\sin{\\,\varepsilon}$$
+
 ### References
 
 [^1]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
