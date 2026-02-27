@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+# authors:
+#   - family-names: YourFamilyName
+#     given-names: YourGivenNames
+#     # ... other software authors ...
+title: "Auto Blnds"
+# version: 0.0.0
+# doi: 10.5281/zenodo.1234567 # DOI for the software itself
+
+references:
