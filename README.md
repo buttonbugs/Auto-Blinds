@@ -29,11 +29,11 @@ we have
 
 $$
 \begin{aligned}
-\sin{\delta}=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{N}}_{\bigoplus{,ecl}}\right)\right]}\\
-=\cos{\angle(-{\hat{r}}_{SE},{\hat{N}}_{\bigoplus{,ecl}})}\\
-=\frac{{\hat{N}}_{\bigoplus{,ecl}}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{N}}_{\bigoplus{,ecl}}\right|\left|{\hat{r}}_{SE}\right|}\\
-=-\left[\begin{matrix}\cos{\lambda}\\\sin{\lambda}\\0\\\end{matrix}\right]\bullet\left[\begin{matrix}0\\\sin{\varepsilon}\\\cos{\varepsilon}\\\end{matrix}\right]\\
-=-\sin{\lambda}\sin{\varepsilon}
+\sin{\delta}&=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{N}}_{\bigoplus{,ecl}}\right)\right]}\\
+&=\cos{\angle(-{\hat{r}}_{SE},{\hat{N}}_{\bigoplus{,ecl}})}\\
+&=\frac{{\hat{N}}_{\bigoplus{,ecl}}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{N}}_{\bigoplus{,ecl}}\right|\left|{\hat{r}}_{SE}\right|}\\
+&=-\left[\begin{matrix}\cos{\lambda}\\\sin{\lambda}\\0\\\end{matrix}\right]\bullet\left[\begin{matrix}0\\\sin{\varepsilon}\\\cos{\varepsilon}\\\end{matrix}\right]\\
+&=-\sin{\lambda}\sin{\varepsilon}
 \end{aligned}
 $$
 
