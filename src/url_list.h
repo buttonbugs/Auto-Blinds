@@ -1,6 +1,7 @@
 #ifndef URL_LIST
 #define URL_LIST
 
+// Notion API URL
 #define notion_query_data_sourse_url_p1 "https://api.notion.com/v1/data_sources/"
 #define notion_query_data_sourse_url_p2 "/query"
 #define notion_create_page_url "https://api.notion.com/v1/pages"

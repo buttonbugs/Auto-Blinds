@@ -9,3 +9,5 @@ test
 # FIles
 *secret.h
 README.docx
+CMakeLists.txt
+sdkconfig*

@@ -1,6 +1,13 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef CONFIG
+#define CONFIG
 
-#define EPSILON 23.44          // deg, ε: Earth obliquity (axial tilt)
+/* Funcions */
+#define EABLE_ROUTER            // Optional, make your ESP32 become a WiFi router
+
+/* Geometry */
+#define EPSILON 23.44           // deg, ε: Earth obliquity (axial tilt)
+
+/* Hardware */
+#define STEP_DURATION 5         // ms, minimum time for each step of the stepper motor
 
 #endif

@@ -4,7 +4,7 @@
 
 **VS Code Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
-**Framework:** Arduino
+**Framework:** ESP-IDF
 
 ## Preview (Manual Mode)
 <img src="README/preview_1.gif" alt="Preiew"/>
