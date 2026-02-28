@@ -1,12 +1,10 @@
 # Auto-Blinds
 
-**Board:** Seeed Studio XIAO-ESP32-C3
-- [Wiki](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/)
-- [Amazon](https://www.amazon.com/gp/product/B0B94JZ2YF/)
+**Board:** [Seeed Studio XIAO-ESP32-C3](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/) [^1] [^2]
+
+**VS Code Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
 **Framework:** Arduino
-
-**Visual Studio Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
 ## Preview (Manual Mode)
 <img src="README/preview_1.gif" alt="Preiew"/>
@@ -15,7 +13,7 @@
 
 ### 1. Subsolar point
 
-Ecliptic coordinate system [^1] is used to calculate the subsolar point longitude $\\,\lambda$ [^2], where $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
+Ecliptic coordinate system [^3] is used to calculate the subsolar point longitude $\\,\lambda$ [^4], where $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
 
 Since
 
@@ -58,7 +56,7 @@ where:
 
 - $\delta$ is the longitude of the subsolar point
 
-- $\lambda$ is the ecliptic longitude of Earth [^1]
+- $\lambda$ is the ecliptic longitude of Earth [^3]
 
 - $\varepsilon$ is the obliquity of Earth
 
@@ -68,6 +66,10 @@ $$\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
 
 ### References
 
-[^1]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
+[^1]: “Getting Started with Seeed Studio XIAO ESP32C3 | Seeed Studio Wiki.” Accessed: Feb. 27, 2026. [Online]. Available: https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/
 
-[^2]:	“Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
+[^2]: “Amazon.com: Seeed Studio XIAO ESP32C3 - Tiny MCU Board with Wi-Fi and BLE for IoT Controlling Scenarios. Microcontroller with Battery Charge, Power Efficient, and Rich Interface for Tiny Machine Learning. … : Electronics.” Accessed: Feb. 27, 2026. [Online]. Available: https://www.amazon.com/gp/product/B0B94JZ2YF/?th=1
+
+[^3]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
+
+[^4]:	“Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
