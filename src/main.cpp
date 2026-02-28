@@ -20,6 +20,11 @@ void setup() {
 }
 
 void loop() {
+    // Wait 1 minutes
+    delay(60000);
+}
+
+void fetch_notion() {
     // 2. Define your Headers (Notion example)
     std::map<String, String> notionHeaders;
     notionHeaders["Authorization"] = "Bearer " + String(NOTION_TOKEN);
@@ -34,7 +39,4 @@ void loop() {
 
     // 4. Fire the request!
     sendHttpRequest("POST", String(notion_query_data_sourse_url_p1) + DATA_SOURCE_ID + notion_query_data_sourse_url_p2, notionHeaders, notionBody);
-
-    // Wait 1 minutes
-    delay(60000);
 }
