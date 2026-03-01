@@ -6,8 +6,18 @@
 
 **Framework:** Arduino
 
-## Preview (Manual Mode)
+## Preview
+
+### Auto Mode
+
+...
+
+### Manual Mode
 <img src="README/preview_1.gif" alt="Preiew"/>
+
+## Background and Motivation
+
+...
 
 ## Analemma Calculation
 
@@ -82,7 +92,7 @@ where:
 - $\phi_o$ is the latitude of the observer
 - $\lambda_o$ is the longitude of the observer
 
-
+Then the coordinate system needs to be transformed into the observer’s coordinate system. Since the roof edges mentioned in Background and Motivation are parallel to the lines of latitude and longitude, the **local east-north-up (ENU)** [^8] coordinate system, instead of the **horizontal coordinate system** [^9], should be used to represent the Sun’s position.
 
 ### References
 
@@ -99,3 +109,7 @@ where:
 [^6]: “Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
 
 [^7]: T. Zhang, P. W. Stackhouse Jr, B. Macpherson, and J. C. Mikovitz, [“A solar azimuth formula that renders circumstantial treatment unnecessary without compromising mathematical rigor: Mathematical setup, application and extension of a formula based on the subsolar point and atan2 function,”](https://www.sciencedirect.com/science/article/pii/S0960148121004031) *Renew. Energy*, vol. 172, pp. 1333–1340, 2021.
+
+[^8]: “Local tangent plane coordinates,” *Wikipedia*. Feb. 13, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Local_tangent_plane_coordinates&oldid=1275515987
+
+[^9]: “Horizontal coordinate system,” *Wikipedia*. Jan. 07, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Horizontal_coordinate_system&oldid=1267888614
