@@ -11,7 +11,7 @@
 
 ## Analemma Calculation
 
-**Ecliptic coordinate system** [^3] is used to calculate the subsolar latitude $\delta$ or $\phi_{s}$ [^4], where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
+**Ecliptic coordinate system** [^3] is used to calculate the Sun’s declination ($\delta$) [^4], where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
 
 Since
 
@@ -52,13 +52,13 @@ where:
 
 - ${\hat{n}}_{NCP}$ is the unit vector pointing toward the **north celestial pole (NCP)** in the ecliptic coordinate system
 
-- $\delta$ is the latitude of the subsolar point
+- $\delta$ is the Sun’s declination
 
 - $\lambda_\odot$ is the ecliptic longitude of Earth [^3]
 
 - $\varepsilon$ is the obliquity of Earth
 
-Therefore,
+Since the subsolar latitude ($\phi_{s}$) is the same as the Sun’s declination ($\delta$), we have
 
 $$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
 
