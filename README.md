@@ -62,7 +62,7 @@ Since the subsolar latitude ($\phi_s$) [^5] is the same as the Sun’s declinati
 
 $$\phi_s=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
 
-In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^5], the subsolar vector (${\hat{u}}_s$) can be calculated as:
+In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^6], the subsolar vector (${\hat{u}}_s$) can be calculated as:
 
 $${\hat{u}}_s=\left[\begin{matrix}\\,\cos{(\phi_s)}\\,\cos{(\lambda_s)}\\\\ \cos{(\phi_s)}\\,\sin{(\lambda_s)}\\\\ \sin{(\phi_s)}\\ \end{matrix}\right]$$
 
