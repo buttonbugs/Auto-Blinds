@@ -11,9 +11,7 @@
 
 ## Analemma Calculation
 
-### 1. Subsolar point
-
-Ecliptic coordinate system [^3] is used to calculate the subsolar point longitude $\\,\lambda$ [^4], where $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
+**Ecliptic coordinate system** [^3] is used to calculate the subsolar latitude $\delta$ or $\phi_{ss}$ [^4], where $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
 
 Since
 
@@ -54,7 +52,7 @@ where:
 
 - ${\hat{N}}_{\bigoplus{,ecl}}$ is the unit vector pointing toward the north celestial pole in the ecliptic coordinate system
 
-- $\delta$ is the longitude of the subsolar point
+- $\delta$ is the latitude of the subsolar point
 
 - $\lambda$ is the ecliptic longitude of Earth [^3]
 
@@ -62,7 +60,7 @@ where:
 
 Therefore,
 
-$$\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
+$$\phi_{ss}=\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
 
 ### References
 

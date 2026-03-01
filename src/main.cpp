@@ -13,10 +13,13 @@
 #include "url_list.h"           // Place to store URLs
 #include "request_handler.h"    // To handle HTTP requests
 
+void fetch_notion();
+
 void setup() {
     Serial.begin(9600);
     delay(10000);                // Give serial monitor time to open
     connect_to_wifi();
+    fetch_notion();
 }
 
 void loop() {
