@@ -11,7 +11,7 @@
 
 ## Analemma Calculation
 
-**Ecliptic coordinate system** [^3] is used to calculate the subsolar latitude $\delta$ or $\phi_{ss}$ [^4], where $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
+**Ecliptic coordinate system** [^3] is used to calculate the subsolar latitude $\delta$ or $\phi_{s}$ [^4], where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
 
 Since
 
@@ -60,7 +60,12 @@ where:
 
 Therefore,
 
-$$\phi_{ss}=\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
+$$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
+
+In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^5], the subsolar vector is:
+
+$${\hat{u}}_{s}=\left[\begin{matrix}\cos{(\phi_{s})}\cos{(\lambda_{s})}\\\cos{(\phi_{s})}\sin{(\lambda_{s})}\\\sin{(\phi_{s})}\\\end{matrix}\right]$$
+
 
 ### References
 
@@ -71,3 +76,5 @@ $$\phi_{ss}=\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
 [^3]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
 
 [^4]:	“Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
+
+[5]	“Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
