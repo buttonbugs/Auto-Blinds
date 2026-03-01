@@ -17,8 +17,8 @@ Since
 
 $${\hat{r}}_{SE}=\left[
 \begin{matrix}
-\cos{\\,\lambda}\\
-\sin{\\,\lambda}\\
+\cos{\\,\lambda_\bigodot}\\
+\sin{\\,\lambda_\bigodot}\\
 0\\
 \end{matrix}
 \right]
@@ -26,7 +26,7 @@ $$
 
 and
 
-$${\hat{N}}_{\bigoplus{,ecl}}=\left[
+$${\hat{n}}_{NCP}=\left[
 \begin{matrix}0\\
 \sin{\\,\varepsilon}\\
 \cos{\\,\varepsilon}\\
@@ -38,11 +38,11 @@ we have
 
 $$
 \begin{aligned}
-\sin{\\,\delta}&=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{N}}_{\bigoplus{,ecl}}\right)\right]}\\
-&=\cos{\angle(-{\hat{r}}_{SE},{\hat{N}}_{\bigoplus{,ecl}})}\\
-&=\frac{{\hat{N}}_{\bigoplus{,ecl}}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{N}}_{\bigoplus{,ecl}}\right|\left|{\hat{r}}_{SE}\right|}\\
-&=-\left[\begin{matrix} \cos{\\,\lambda}\\\\ \sin{\\,\lambda}\\\\0\end{matrix}\right]\bullet\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
-&=-\sin{\\,\lambda}\\,\sin{\\,\varepsilon}.
+\sin{\\,\delta}&=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{n}}_{NCP}\right)\right]}\\
+&=\cos{\angle(-{\hat{r}}_{SE},{\hat{n}}_{NCP})}\\
+&=\frac{{\hat{n}}_{NCP}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{n}}_{NCP}\right|\left|{\hat{r}}_{SE}\right|}\\
+&=-\left[\begin{matrix} \cos{\\,\lambda_\bigodot}\\\\ \sin{\\,\lambda_\bigodot}\\\\0\end{matrix}\right]\bullet\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
+&=-\sin{\\,\lambda_\bigodot}\\,\sin{\\,\varepsilon}.
 \end{aligned}
 $$
 
@@ -50,21 +50,24 @@ where:
 
 - ${\hat{r}}_{SE}$ is the unit vector pointing from the Sun to Earth in the ecliptic coordinate system
 
-- ${\hat{N}}_{\bigoplus{,ecl}}$ is the unit vector pointing toward the north celestial pole in the ecliptic coordinate system
+- ${\hat{n}}_{NCP}$ is the unit vector pointing toward the **north celestial pole (NCP)** in the ecliptic coordinate system
 
 - $\delta$ is the latitude of the subsolar point
 
-- $\lambda$ is the ecliptic longitude of Earth [^3]
+- $\lambda_\bigodot$ is the ecliptic longitude of Earth [^3]
 
 - $\varepsilon$ is the obliquity of Earth
 
 Therefore,
 
-$$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda}\\,\sin{\\,\varepsilon})}$$
+$$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda_\bigodot}\\,\sin{\\,\varepsilon})}$$
 
 In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^5], the subsolar vector is:
 
-$${\hat{u}}_{s}=\left[\begin{matrix}\cos{(\phi_{s})}\cos{(\lambda_{s})}\\\cos{(\phi_{s})}\sin{(\lambda_{s})}\\\sin{(\phi_{s})}\\\end{matrix}\right]$$
+$${\hat{u}}_{s}=\left[\begin{matrix}\\,\cos{(\phi_{s})}\\,\cos{(\lambda_{s})}\\\\ \cos{(\phi_{s})}\\,\sin{(\lambda_{s})}\\\\ \sin{(\phi_{s})}\\ \end{matrix}\right]$$
+
+
+
 
 
 ### References
@@ -77,4 +80,4 @@ $${\hat{u}}_{s}=\left[\begin{matrix}\cos{(\phi_{s})}\cos{(\lambda_{s})}\\\cos{(\
 
 [^4]:	“Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
 
-[5]	“Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
+[^5]:	“Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
