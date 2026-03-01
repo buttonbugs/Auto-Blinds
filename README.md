@@ -69,7 +69,9 @@ $${\hat{u}}_s=\left[\begin{matrix}\\,\cos{(\phi_s)}\\,\cos{(\lambda_s)}\\\\ \cos
 where:
 
 - $\phi_s$ is the subsolar latitude
-- $\lambda_s$ is the subsolar longitude, which can be calculated according to the current time [^7]
+- $\lambda_s$ is the subsolar longitude, which can be calculated according to the current time ($T_{UTC}$) using the following formula [^7]:
+
+$$\lambda_s=-15(T_{UTC}-12)$$
 
 Similarly, the normalized observer vector (${\hat{u}}_o$), which points directly from the center of Earth to the observer, in ECEF coordinate system can be calculated as:
 
