@@ -58,15 +58,27 @@ where:
 
 - $\varepsilon$ is the obliquity of Earth
 
-Since the subsolar latitude ($\phi_{s}$) is the same as the Sun’s declination ($\delta$), we have
+Since the subsolar latitude ($\phi_s$) [^5] is the same as the Sun’s declination ($\delta$) [^4], we have
 
-$$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
+$$\phi_s=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
 
-In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^5], the subsolar vector is:
+In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^5], the subsolar vector (${\hat{u}}_s$) can be calculated as:
 
-$${\hat{u}}_{s}=\left[\begin{matrix}\\,\cos{(\phi_{s})}\\,\cos{(\lambda_{s})}\\\\ \cos{(\phi_{s})}\\,\sin{(\lambda_{s})}\\\\ \sin{(\phi_{s})}\\ \end{matrix}\right]$$
+$${\hat{u}}_s=\left[\begin{matrix}\\,\cos{(\phi_s)}\\,\cos{(\lambda_s)}\\\\ \cos{(\phi_s)}\\,\sin{(\lambda_s)}\\\\ \sin{(\phi_s)}\\ \end{matrix}\right]$$
 
+where:
 
+- $\phi_s$ is the subsolar latitude
+- $\lambda_s$ is the subsolar longitude, which can be calculated according to the current time [^7]
+
+Similarly, the normalized observer vector (${\hat{u}}_o$), which points directly from the center of Earth to the observer, in ECEF coordinate system can be calculated as:
+
+$${\hat{u}}_s=\left[\begin{matrix}\\,\cos{(\phi_o)}\\,\cos{(\lambda_o)}\\\\ \cos{(\phi_o)}\\,\sin{(\lambda_o)}\\\\ \sin{(\phi_o)}\\ \end{matrix}\right]$$
+
+where:
+
+- $\phi_o$ is the latitude of the observer
+- $\lambda_o$ is the longitude of the observer
 
 
 
@@ -78,6 +90,10 @@ $${\hat{u}}_{s}=\left[\begin{matrix}\\,\cos{(\phi_{s})}\\,\cos{(\lambda_{s})}\\\
 
 [^3]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
 
-[^4]:	“Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
+[^4]: “Declination,” *Wikipedia*. Feb. 18, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Declination&oldid=1276361201
 
-[^5]:	“Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
+[^5]: “Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
+
+[^6]: “Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
+
+[^7]: T. Zhang, P. W. Stackhouse Jr, B. Macpherson, and J. C. Mikovitz, [“A solar azimuth formula that renders circumstantial treatment unnecessary without compromising mathematical rigor: Mathematical setup, application and extension of a formula based on the subsolar point and atan2 function,”](https://www.sciencedirect.com/science/article/pii/S0960148121004031) *Renew. Energy*, vol. 172, pp. 1333–1340, 2021.
