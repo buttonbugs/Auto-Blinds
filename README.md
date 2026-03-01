@@ -17,8 +17,8 @@ Since
 
 $${\hat{r}}_{SE}=\left[
 \begin{matrix}
-\cos{\\,\lambda_\bigodot}\\
-\sin{\\,\lambda_\bigodot}\\
+\cos{\\,\lambda_\odot}\\
+\sin{\\,\lambda_\odot}\\
 0\\
 \end{matrix}
 \right]
@@ -41,8 +41,8 @@ $$
 \sin{\\,\delta}&=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{n}}_{NCP}\right)\right]}\\
 &=\cos{\angle(-{\hat{r}}_{SE},{\hat{n}}_{NCP})}\\
 &=\frac{{\hat{n}}_{NCP}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{n}}_{NCP}\right|\left|{\hat{r}}_{SE}\right|}\\
-&=-\left[\begin{matrix} \cos{\\,\lambda_\bigodot}\\\\ \sin{\\,\lambda_\bigodot}\\\\0\end{matrix}\right]\bullet\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
-&=-\sin{\\,\lambda_\bigodot}\\,\sin{\\,\varepsilon}.
+&=-\left[\begin{matrix} \cos{\\,\lambda_\odot}\\\\ \sin{\\,\lambda_\odot}\\\\0\end{matrix}\right]\bullet\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
+&=-\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon}.
 \end{aligned}
 $$
 
@@ -54,13 +54,13 @@ where:
 
 - $\delta$ is the latitude of the subsolar point
 
-- $\lambda_\bigodot$ is the ecliptic longitude of Earth [^3]
+- $\lambda_\odot$ is the ecliptic longitude of Earth [^3]
 
 - $\varepsilon$ is the obliquity of Earth
 
 Therefore,
 
-$$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda_\bigodot}\\,\sin{\\,\varepsilon})}$$
+$$\phi_{s}=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
 
 In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^5], the subsolar vector is:
 
