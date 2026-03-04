@@ -132,9 +132,9 @@ then:
 
 ```math
 \begin{aligned}
-&s_u=-\sin{\left(\lambda_o\right)\cos{\left(\phi_s\right)}\,\cos{\left(\lambda_s\right)}}+\cos{(\lambda_o)}\,\cos{(\phi_s)}\,\sin{(\lambda_s)},\\
-&s_v=-\sin{\left(\phi_o\right)}\,\cos{\left(\lambda_o\right)}\,\cos{\left(\phi_s\right)}\,\cos{\left(\lambda_s\right)}-\sin{\left(\phi_o\right)}\,\sin{\left(\lambda_o\right)}\,\cos{\left(\phi_s\right)}\,\sin{\left(\lambda_s\right)}+\cos{(\phi_o)}\,\sin{(\phi_s)},\\
-&s_w=\cos{(\phi_o)}\,\cos{(\lambda_o)}\,\cos{(\phi_s)}\,\cos{\left(\lambda_s\right)}+\cos{(\phi_o)}\,\sin{(\lambda_o)}\,\cos{(\phi_s)}\,\sin{(\lambda_s)}+\sin{(\phi_o)}\,\sin{(\phi_s)}.
+&s_u=-\sin(\lambda_o)\,\cos(\phi_s)\,\cos(\lambda_s)+\cos(\lambda_o)\,\cos(\phi_s)\,\sin(\lambda_s),\\
+&s_v=-\sin{(\phi_o)}\,\cos{(\lambda_o)}\,\cos{(\phi_s)}\,\cos{(\lambda_s)}-\sin{(\phi_o)}\,\sin{(\lambda_o)}\,\cos{(\phi_s)}\,\sin{(\lambda_s)}+\cos{(\phi_o)}\,\sin{(\phi_s)},\\
+&s_w=s_w=\cos{(\phi_o)}\,\cos{(\lambda_o)}\,\cos{(\phi_s)}\,\cos{(\lambda_s)}+\cos{(\phi_o)}\,\sin{(\lambda_o)}\,\cos{(\phi_s)}\,\sin{(\lambda_s)}+\sin{(\phi_o)}\,\sin{(\phi_s)}.
 \end{aligned}
 ```
 
