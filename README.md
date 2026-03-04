@@ -19,7 +19,7 @@
 
 ...
 
-## Analemma Calculation
+## ENU Analemma Calculation
 
 **Ecliptic coordinate system** [^3] is used to calculate the Sun’s declination ($\delta$) [^4], where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
 
@@ -92,7 +92,61 @@ where:
 - $\phi_o$ is the latitude of the observer
 - $\lambda_o$ is the longitude of the observer
 
+Note: $ϕ_o$ is the [geodetic latitude](https://en.wikipedia.org/wiki/Geodetic_coordinates) of the observer. However, $ϕ_s$ is the [geocentric latitude](https://en.wikipedia.org/wiki/Latitude#Geocentric_latitude) of the Sun, ignoring the [parallax effect](https://en.wikipedia.org/wiki/Parallax).
+
 Then the coordinate system needs to be transformed into the observer’s coordinate system. Since the roof edges mentioned in Background and Motivation are parallel to the lines of latitude and longitude, the **local east-north-up (ENU)** [^8] coordinate system, instead of the **horizontal coordinate system** [^9], should be used to represent the Sun’s position.
+
+Therefore, the unit vectors of the **ENU** coordinate system **expressed in** the **ECEF** coordinate system ($\hat{u}$, $\hat{v}$ and $\hat{w}$) can be calculated based on the normalized observer vector (${\hat{u}}_o$):
+
+```math
+\begin{aligned}
+&\hat{u}=\left[\begin{matrix}u_x&u_y&u_z\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\\end{matrix}\right],\\
+&\hat{v}=\left[\begin{matrix}v_x&v_y&v_z\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\phi_o)}\cos{(\lambda_o)}&-\sin{(\phi_o)}\sin{(\lambda_o)}&\cos{(\phi_o)}\\\end{matrix}\right],\\
+&\hat{w}=\left[\begin{matrix}w_x&w_y&w_x\\\end{matrix}\right]={{\hat{u}}_o}^T=\left[\begin{matrix}\cos{(\phi_o)}\cos{(\lambda_o)}&\cos{(\phi_o)}\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right].
+\end{aligned}
+```
+
+where:
+$\hat{u}$ is the unit vector pointing to the east
+$\hat{v}$ is the unit vector pointing to the north
+$\hat{w}$ is the unit vector pointing vertically upward
+Subsequently, the Rotation Matrix ($R$) of the coordinate system transformation can be expressed as:
+
+```math
+R=\left[\begin{matrix}\hat{u}\\\hat{v}\\\hat{w}\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\cos{(\lambda_o)}&-\sin{(\phi_o)}\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\cos{(\lambda_o)}&\cos{(\phi_o)}\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]
+```
+
+Applying the Rotation Matrix ($R$) to the normalized observer vector (${\hat{u}}_o$) gives the subsolar vector in the ENU coordinate system (${\hat{u}}_s\prime$) [^10]:
+
+```math
+{\hat{u}}_s\prime=R{\hat{u}}_s=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\cos{(\lambda_o)}&-\sin{(\phi_o)}\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\cos{(\lambda_o)}&\cos{(\phi_o)}\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]\left[\begin{matrix}\cos{(\phi_s)}\cos{(\lambda_s)}\\\cos{(\phi_s)}\sin{(\lambda_s)}\\\sin{(\phi_s)}\\\end{matrix}\right]
+```
+
+Let
+
+```math
+{\hat{u}}_s\prime=\left[\begin{matrix}s_u\\s_v\\s_w\\\end{matrix}\right],
+```
+
+then:
+
+```math
+\begin{aligned}
+&s_u=-\sin{\left(\lambda_o\right)\cos{\left(\phi_s\right)}\cos{\left(\lambda_s\right)}}+\cos{(\lambda_o)}\cos{(\phi_s)}\sin{(\lambda_s)},\\
+&s_v=-\sin{\left(\phi_o\right)}\cos{\left(\lambda_o\right)}\cos{\left(\phi_s\right)}\cos{\left(\lambda_s\right)}-\sin{\left(\phi_o\right)}\sin{\left(\lambda_o\right)}\cos{\left(\phi_s\right)}\sin{\left(\lambda_s\right)}+\cos{(\phi_o)}\sin{(\phi_s)},\\
+&s_w=\cos{(\phi_o)}\cos{(\lambda_o)}\cos{(\phi_s)}\cos{\left(\lambda_s\right)}+\cos{(\phi_o)}\sin{(\lambda_o)}\cos{(\phi_s)}\sin{(\lambda_s)}+\sin{(\phi_o)}\sin{(\phi_s)}.
+\end{aligned}
+```
+
+Finally, $\arccos{(s_u)}$ is used to represent the solar altitude angle ($a_s\prime$) in the **$uw$-plane**:
+
+```math
+a_s\prime = 
+\begin{cases} 
+arccos(s_u) & \text{if } s_w \ge 0\\
+-arccos(s_u) & \text{if } s_w < 0 
+\end{cases}
+```
 
 ### References
 
@@ -113,3 +167,5 @@ Then the coordinate system needs to be transformed into the observer’s coordin
 [^8]: “Local tangent plane coordinates,” *Wikipedia*. Feb. 13, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Local_tangent_plane_coordinates&oldid=1275515987
 
 [^9]: “Horizontal coordinate system,” *Wikipedia*. Jan. 07, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Horizontal_coordinate_system&oldid=1267888614
+
+[^10]: “Geographic coordinate conversion,” *Wikipedia*. Dec. 22, 2025. Accessed: Mar. 04, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Geographic_coordinate_conversion&oldid=1328905303#From_ECEF_to_ENU
