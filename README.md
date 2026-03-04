@@ -101,8 +101,8 @@ Therefore, the unit vectors of the **ENU** coordinate system **expressed in** th
 ```math
 \begin{aligned}
 &\hat{u}=\left[\begin{matrix}u_x&u_y&u_z\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\\end{matrix}\right],\\
-&\hat{v}=\left[\begin{matrix}v_x&v_y&v_z\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\phi_o)}\cos{(\lambda_o)}&-\sin{(\phi_o)}\sin{(\lambda_o)}&\cos{(\phi_o)}\\\end{matrix}\right],\\
-&\hat{w}=\left[\begin{matrix}w_x&w_y&w_x\\\end{matrix}\right]={{\hat{u}}_o}^T=\left[\begin{matrix}\cos{(\phi_o)}\cos{(\lambda_o)}&\cos{(\phi_o)}\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right].
+&\hat{v}=\left[\begin{matrix}v_x&v_y&v_z\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\end{matrix}\right],\\
+&\hat{w}=\left[\begin{matrix}w_x&w_y&w_x\\\end{matrix}\right]={{\hat{u}}_o}^T=\left[\begin{matrix}\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right].
 \end{aligned}
 ```
 
@@ -113,13 +113,13 @@ $\hat{w}$ is the unit vector pointing vertically upward
 Subsequently, the Rotation Matrix ($R$) of the coordinate system transformation can be expressed as:
 
 ```math
-R=\left[\begin{matrix}\hat{u}\\\hat{v}\\\hat{w}\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\cos{(\lambda_o)}&-\sin{(\phi_o)}\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\cos{(\lambda_o)}&\cos{(\phi_o)}\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]
+R=\left[\begin{matrix}\hat{u}\\\hat{v}\\\hat{w}\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]
 ```
 
 Applying the Rotation Matrix ($R$) to the normalized observer vector (${\hat{u}}_o$) gives the subsolar vector in the ENU coordinate system (${\hat{u}}_s\prime$) [^10]:
 
 ```math
-{\hat{u}}_s\prime=R{\hat{u}}_s=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\cos{(\lambda_o)}&-\sin{(\phi_o)}\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\cos{(\lambda_o)}&\cos{(\phi_o)}\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]\left[\begin{matrix}\cos{(\phi_s)}\cos{(\lambda_s)}\\\cos{(\phi_s)}\sin{(\lambda_s)}\\\sin{(\phi_s)}\\\end{matrix}\right]
+{\hat{u}}_s\prime=R{\hat{u}}_s=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]\left[\begin{matrix}\cos{(\phi_s)}\,\cos{(\lambda_s)}\\\cos{(\phi_s)}\,\sin{(\lambda_s)}\\\sin{(\phi_s)}\\\end{matrix}\right]
 ```
 
 Let
@@ -132,9 +132,9 @@ then:
 
 ```math
 \begin{aligned}
-&s_u=-\sin{\left(\lambda_o\right)\cos{\left(\phi_s\right)}\cos{\left(\lambda_s\right)}}+\cos{(\lambda_o)}\cos{(\phi_s)}\sin{(\lambda_s)},\\
-&s_v=-\sin{\left(\phi_o\right)}\cos{\left(\lambda_o\right)}\cos{\left(\phi_s\right)}\cos{\left(\lambda_s\right)}-\sin{\left(\phi_o\right)}\sin{\left(\lambda_o\right)}\cos{\left(\phi_s\right)}\sin{\left(\lambda_s\right)}+\cos{(\phi_o)}\sin{(\phi_s)},\\
-&s_w=\cos{(\phi_o)}\cos{(\lambda_o)}\cos{(\phi_s)}\cos{\left(\lambda_s\right)}+\cos{(\phi_o)}\sin{(\lambda_o)}\cos{(\phi_s)}\sin{(\lambda_s)}+\sin{(\phi_o)}\sin{(\phi_s)}.
+&s_u=-\sin{\left(\lambda_o\right)\cos{\left(\phi_s\right)}\,\cos{\left(\lambda_s\right)}}+\cos{(\lambda_o)}\,\cos{(\phi_s)}\,\sin{(\lambda_s)},\\
+&s_v=-\sin{\left(\phi_o\right)}\,\cos{\left(\lambda_o\right)}\,\cos{\left(\phi_s\right)}\,\cos{\left(\lambda_s\right)}-\sin{\left(\phi_o\right)}\,\sin{\left(\lambda_o\right)}\,\cos{\left(\phi_s\right)}\,\sin{\left(\lambda_s\right)}+\cos{(\phi_o)}\,\sin{(\phi_s)},\\
+&s_w=\cos{(\phi_o)}\,\cos{(\lambda_o)}\,\cos{(\phi_s)}\,\cos{\left(\lambda_s\right)}+\cos{(\phi_o)}\,\sin{(\lambda_o)}\,\cos{(\phi_s)}\,\sin{(\lambda_s)}+\sin{(\phi_o)}\,\sin{(\phi_s)}.
 \end{aligned}
 ```
 
