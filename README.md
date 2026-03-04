@@ -138,7 +138,7 @@ then:
 \end{aligned}
 ```
 
-Finally, $\arccos{(s_u)}$ is used to represent the solar altitude angle ($a_s\prime$) in the **$uw$-plane**:
+Finally, $\arccos{(s_u)}$ is used to represent the solar altitude angle ($a_s\prime$) in the $uw$-plane:
 
 ```math
 a_s\prime = 
