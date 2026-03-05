@@ -143,8 +143,8 @@ Finally, $\arccos{(s_u)}$ is used to represent the solar altitude angle ($a_s\pr
 ```math
 a_s\prime = 
 \begin{cases} 
-arccos(s_u) & \text{if } s_w \ge 0\\
--arccos(s_u) & \text{if } s_w < 0 
+\arccos(s_u) & \text{if } s_w \ge 0\\
+-\arccos(s_u) & \text{if } s_w < 0 
 \end{cases}
 ```
 
