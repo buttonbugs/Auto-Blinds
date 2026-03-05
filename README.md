@@ -1,10 +1,6 @@
-# Auto-Blinds
+# Auto Blinds
 
-**Board:** [Seeed Studio XIAO-ESP32-C3](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/) [^1] [^2]
-
-**VS Code Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
-
-**Framework:** Arduino
+**Auto Blinds** is an automation project that dynamically adjusts blind orientation based on the sun's position ([Auto Mode](#auto-mode)). It also includes a mobile interface for convenient remote manual control ([Manual Mode](#manual-mode)).
 
 ## Preview
 
@@ -18,6 +14,14 @@
 ## Background and Motivation
 
 ...
+
+## Development
+
+**Board:** [Seeed Studio XIAO-ESP32-C3](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/) [^1] [^2]
+
+**VS Code Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
+
+**Framework:** Arduino
 
 ## ENU Analemma Calculation
 
