@@ -8,11 +8,24 @@
 #include "wifi_handler.h"       // To handle wifi connection
 #include "notion_handler.h"
 
+bool auto_mode = true;
+int target = 0;
+String page_id = "";
+
 void setup() {
     Serial.begin(9600);
     delay(10000);                // Give serial monitor time to open
     connect_to_wifi();
-    get_command();
+    unsigned long t = millis();
+    if(get_latest_command(&auto_mode, &target, &page_id)) {
+        Serial.println("Get Latest Command Success");
+    } else {
+        Serial.println("Get Latest Command Fail");
+    }
+    Serial.print("time: ");
+    Serial.println(millis() - t);
+    Serial.println(auto_mode);
+    Serial.println(target);
 }
 
 void loop() {

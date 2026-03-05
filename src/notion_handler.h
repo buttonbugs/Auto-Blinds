@@ -1,6 +1,6 @@
 #ifndef NOTION_HANDLER
 #define NOTION_HANDLER
 
-void get_command();
+bool get_latest_command(bool * auto_mode, int * target, String * page_id);
 
 #endif

@@ -31,28 +31,46 @@ void fetch_notion_database(String data_source_id, int *response_code, String *re
 }
 
 /* Http Data Processing */
-void get_command() {
+bool get_latest_command(bool * auto_mode, int * target, String * page_id) {
     int http_code;
     String http_body;
     fetch_notion_database(DATA_SOURCE_ID, &http_code, &http_body);
+
+    if (http_code == 0) {
+        return false;
+    }
+
+    Serial.println(http_body);
     JsonDocument doc;
     DeserializationError error = deserializeJson(doc, http_body.c_str());
 
     if (error) {
         Serial.print("deserializeJson() failed: ");
         Serial.println(error.f_str());
-        return;
+        return false;
     }
-
+    
+    bool auto_mode_tmp = true;
     JsonArray results = doc["results"].as<JsonArray>();
     for (JsonObject obj : results) {
         // Access members inside each object
-        const char* id = obj["id"];
-        const char* val = obj["created_time"];
-        const char* edt = obj["last_edited_time"];
-
-        Serial.printf("ID: %s, create: %s, edit: %s\n", id, val, edt);
+        const char* command_status = obj["properties"]["Status"]["status"]["name"];
+        if (command_status == "Ignore") {
+            Serial.println("Status: Ignore");
+        } else {
+            const char* command_description = obj["properties"]["Description"]["title"][0]["plain_text"];
+            if (command_description == "Auto Mode") {
+                *auto_mode = true;
+            } else {
+                *auto_mode = false;
+                *target = obj["properties"]["Target"]["number"];
+            }
+            Serial.println(command_description);
+            return true;
+        }
     }
+    *auto_mode = true;
+    return true;
 }
 
 void download_current_status() {
