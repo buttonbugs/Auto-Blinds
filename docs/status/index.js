@@ -86,6 +86,13 @@ function render_target() {
     ctx.fillText(parameter_list["target"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
 }
 
+function render_auto_mode() {
+    // Render the auto_mode text
+    ctx.font = "12px Arial";
+    ctx.fillStyle = parameter_list["auto_mode"] ? "green" : "blue";
+    ctx.fillText(parameter_list["auto_mode"] ? "Auto Mode" : "Manual Mode", 0, height);
+}
+
 function render() {
     try {
         // Check if "angle" exists
@@ -112,6 +119,23 @@ function render() {
             }
         } else {
             console.log("Parameter 'target' not found");
+        }
+
+        // Check if "auto_mode" exists
+        if (parameter_list["auto_mode"]) {
+            if (parameter_list["auto_mode"] === "true") {
+                parameter_list["auto_mode"] = true;
+                render_auto_mode();
+            } else if (parameter_list["auto_mode"] === "false") {
+                parameter_list["auto_mode"] = false;
+                render_auto_mode();
+            } else {
+                parameter_list["auto_mode"] = false;
+                console.log("Parameter 'auto_mode' is not a boolean");
+            }
+        } else {
+            parameter_list["auto_mode"] = false;
+            console.log("Parameter 'auto_mode' not found");
         }
     } catch (error) {
         console.log(error);
