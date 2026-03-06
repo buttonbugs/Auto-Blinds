@@ -1,6 +1,7 @@
-const BLIND_NUM = 6
+const BLIND_NUM = 9
 const height = 320
 const roof_height = 40
+const angle_target_diff = 0.05      // Render target only if (Math.abs(angle - target) > angle_target_diff)
 
 var parameter_list = {}
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
@@ -31,34 +32,86 @@ function render_default() {
 function render_blinds() {
     const blind_half_length = (height - BLIND_START.y) / BLIND_NUM / 2;
     const stroke_half_length = blind_half_length + BLIND_START.length_offset
+    const arrow_length = (height - BLIND_START.y) / 2
     const angle = Math.PI * map(parameter_list["angle"], 0, 180, BLIND_START.angle_offset - 90, 90 - BLIND_START.angle_offset) / 180
     const x = BLIND_START.x;
-    ctx.lineWidth = 2 ;
-    ctx.strokeStyle = isDark ? "white" : "#000000";
+
+    // Render the blinds
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = isDark ? "white" : "black";
     ctx.beginPath();
     ctx.moveTo(width, BLIND_START.y - roof_height);
     ctx.lineTo(x, BLIND_START.y - roof_height);
     ctx.lineTo(x, BLIND_START.y);
     for (let index = 0; index < BLIND_NUM; index++) {
         const y = BLIND_START.y + blind_half_length * (2 * index + 1);
-        ctx.moveTo(x + stroke_half_length * Math.cos(angle), y - stroke_half_length * Math.sin(angle));
-        ctx.lineTo(x - stroke_half_length * Math.cos(angle), y + stroke_half_length * Math.sin(angle));
+        ctx.moveTo(x - stroke_half_length * Math.cos(angle), y + stroke_half_length * Math.sin(angle));
+        ctx.lineTo(x + stroke_half_length * Math.cos(angle), y - stroke_half_length * Math.sin(angle));
     }
     ctx.stroke();
-    //
+
+    // Render the angle arrow
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "green";
+    const y = BLIND_START.y + blind_half_length * (2 * Math.trunc(BLIND_NUM/2) + 1);
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
+    ctx.stroke();
+
+    // Render the angle text
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "green";
+    ctx.fillText(parameter_list["angle"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
+}
+
+function render_target() {
+    const blind_half_length = (height - BLIND_START.y) / BLIND_NUM / 2;
+    const arrow_length = (height - BLIND_START.y) / 2
+    const angle = Math.PI * map(parameter_list["target"], 0, 180, BLIND_START.angle_offset - 90, 90 - BLIND_START.angle_offset) / 180
+    const x = BLIND_START.x;
+
+    // Render the target arrow
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "blue";
+    const y = BLIND_START.y + blind_half_length * (2 * Math.trunc(BLIND_NUM/2) + 1);
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
+    ctx.stroke();
+
+    // Render the target text
+    ctx.font = "12px Arial";
+    ctx.fillStyle = "blue";
+    ctx.fillText(parameter_list["target"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
 }
 
 function render() {
     try {
+        // Check if "angle" exists
         if (parameter_list["angle"]) {
             if (Number.isFinite( +parameter_list["angle"] )) {
                 parameter_list["angle"] *= 1
-                render_blinds()
+                render_blinds();
             } else {
                 throw new Error("Parameter 'angle' is not a number");
             }
         } else {
             throw new Error("Parameter 'angle' not found");
+        }
+
+        // Check if "target" exists
+        if (parameter_list["target"]) {
+            if (Number.isFinite( +parameter_list["target"] )) {
+                parameter_list["target"] *= 1
+                if (Math.abs(parameter_list["angle"] - parameter_list["target"]) > angle_target_diff) {
+                    render_target();
+                }
+            } else {
+                console.log("Parameter 'target' is not a number");
+            }
+        } else {
+            console.log("Parameter 'target' not found");
         }
     } catch (error) {
         console.log(error);
