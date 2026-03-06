@@ -6,7 +6,7 @@
 #define notion_query_data_sourse_url_p2 "/query"
 #define notion_create_page_url "https://api.notion.com/v1/pages"
 #define notion_update_page_url "https://api.notion.com/v1/pages/"
-#define notion_retrieve_block_url "https://api.notion.com/v1/blocks/"
+#define notion_block_url "https://api.notion.com/v1/blocks/"
 
 /* GitHub Page Preview */
 #define github_preview_p1 "https://buttonbugs.github.io/Auto-Blinds/status/?auto_mode="

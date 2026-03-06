@@ -42,7 +42,30 @@ void retrieve_notion_block(String block_id, int *response_code, String *response
     String notionBody = R"({})";
 
     // 4. Fire the request!
-    sendHttpRequest("GET", String(notion_retrieve_block_url) + block_id, notionHeaders, notionBody, response_code, response_body);
+    sendHttpRequest("GET", String(notion_block_url) + block_id, notionHeaders, notionBody, response_code, response_body);
+}
+
+void update_notion_embed_block(String block_id, String url, int *response_code, String *response_body) {
+    // 2. Define your Headers (Notion example)
+    std::map<String, String> notionHeaders;
+    notionHeaders["Authorization"] = "Bearer " + String(NOTION_TOKEN);
+    notionHeaders["Notion-Version"] = "2025-09-03";
+    notionHeaders["Content-Type"] = "application/json";
+
+    // 3. Define your Body (Create a page in a database)
+    // Using raw strings (R"(...)") makes JSON much easier to read in C++
+    String notionBody = R"({
+        "embed": {
+                "url": ")";
+    notionBody += url;
+    notionBody += R"("
+        }
+    })";
+    Serial.print("Notion Body:");
+    Serial.println(notionBody);
+
+    // 4. Fire the request!
+    sendHttpRequest("PATCH", String(notion_block_url) + block_id, notionHeaders, notionBody, response_code, response_body);
 }
 
 /* Http Data Processing */
@@ -161,5 +184,24 @@ float download_current_status() {
 }
 
 void upload_current_status(bool auto_mode, float angle, float target, double sun_u, double sun_v, double sun_w) {
+    String url = github_preview_p1;
+    url += auto_mode ? "true" : "false";
+    url += github_preview_p2 + String(angle, 6);
+    url += github_preview_p3 + String(target, 6);
+    url += github_preview_p4 + String(sun_u, 16);
+    url += github_preview_p5 + String(sun_v, 16);
+    url += github_preview_p6 + String(sun_w, 16);
+
+    int http_code;
+    String http_body;
+    update_notion_embed_block(NOTION_PREVIEW_BLOCK_ID, url, &http_code, &http_body);
+
+    if (http_code == 0) {
+        Serial.println("update_notion_embed_block() http failed");
+    }
+    Serial.print(http_body);
+}
+
+void update_command_status(){
     //
 }
