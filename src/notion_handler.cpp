@@ -61,8 +61,8 @@ void update_notion_embed_block(String block_id, String url, int *response_code, 
     notionBody += R"("
         }
     })";
-    Serial.print("Notion Body:");
-    Serial.println(notionBody);
+    // Serial.print("Notion Body:");
+    // Serial.println(notionBody);
 
     // 4. Fire the request!
     sendHttpRequest("PATCH", String(notion_block_url) + block_id, notionHeaders, notionBody, response_code, response_body);
@@ -73,7 +73,7 @@ void update_notion_embed_block(String block_id, String url, int *response_code, 
 // Return:
 // - true: success
 // - false: failed or no command
-bool get_latest_command(bool * auto_mode, int * target, String * page_id) {
+bool get_latest_command(bool * auto_mode, float * target, String * page_id) {
     int http_code;
     String http_body;
     fetch_notion_database(DATA_SOURCE_ID, &http_code, &http_body);
@@ -82,7 +82,7 @@ bool get_latest_command(bool * auto_mode, int * target, String * page_id) {
         return false;
     }
 
-    Serial.println(http_body);
+    // Serial.println(http_body);
     JsonDocument doc;
     DeserializationError error = deserializeJson(doc, http_body.c_str());
 
@@ -99,7 +99,7 @@ bool get_latest_command(bool * auto_mode, int * target, String * page_id) {
         const char* command_status = obj["properties"]["Status"]["status"]["name"];
         const char* command_page_id = obj["id"];
         if (command_status == "Ignore") {
-            Serial.println("Status: Ignore");
+            // Serial.println("Status: Ignore");
         } else {
             const char* command_description = obj["properties"]["Description"]["title"][0]["plain_text"];
             if (command_description == "Auto Mode") {
@@ -109,7 +109,7 @@ bool get_latest_command(bool * auto_mode, int * target, String * page_id) {
                 *target = obj["properties"]["Target"]["number"];
             }
             *page_id = command_page_id;
-            Serial.println(command_description);
+            // Serial.println(command_description);
             return true;
         }
     }
@@ -124,7 +124,8 @@ float download_current_status() {
     retrieve_notion_block(NOTION_PREVIEW_BLOCK_ID, &http_code, &http_body);
 
     if (http_code == 0) {
-        return -1.0;
+        Serial.print("download_current_status() http failed");
+        return 0;
     }
 
     // Serial.println(http_body);
@@ -135,23 +136,24 @@ float download_current_status() {
     if (error) {
         Serial.print("deserializeJson() failed: ");
         Serial.println(error.f_str());
-        return -1.0;
+        return 0;
     }
 
     const char* block_type = doc["type"];
     Serial.print(block_type);
     if (String(block_type) != "embed") {
         Serial.println("The preview block is not an 'embed'.");
-        return -1.0;
+        return 0;
     }
     
     String url = doc[block_type]["url"];
-    Serial.println(url);
+    // Serial.println(url);
     
     /* Parse search parameter from URL */
     // 1. Find where parameters start (location.search in JavaScript)
     int queryIndex = url.indexOf('?');
-    if (queryIndex == -1) return -1.0; // No parameters found
+    if (queryIndex == -1) return 0; // No parameters found
+    Serial.print("download_current_status() No parameters found");
 
     // 2. Extract only the query part
     String queryString = url.substring(queryIndex + 1);
@@ -179,8 +181,8 @@ float download_current_status() {
         }
         start = end + 1;
     }
-    
-    return -2.0;
+    Serial.print("download_current_status() 'angle' not found in parameters");
+    return 0;
 }
 
 void upload_current_status(bool auto_mode, float angle, float target, double sun_u, double sun_v, double sun_w) {
@@ -199,7 +201,7 @@ void upload_current_status(bool auto_mode, float angle, float target, double sun
     if (http_code == 0) {
         Serial.println("update_notion_embed_block() http failed");
     }
-    Serial.print(http_body);
+    // Serial.println(http_body);
 }
 
 void update_command_status(){
