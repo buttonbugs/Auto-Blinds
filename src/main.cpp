@@ -26,6 +26,9 @@ void setup() {
     Serial.println(millis() - t);
     Serial.println(auto_mode);
     Serial.println(target);
+    Serial.println(page_id);
+    // Get Current status
+    Serial.println(download_current_status());
 }
 
 void loop() {
