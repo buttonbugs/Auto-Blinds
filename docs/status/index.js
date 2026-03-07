@@ -12,9 +12,10 @@ const draw_line_end_radius = 32
 const draw_line_number = 12
 const track_x = 50
 const track_y = 50
-const sun_text_y_offset = 6
+const sun_text_y_offset = 4
 const sun_text_spacing = 12
 const sun_text_width = 110
+const sun_text_visible_width = 400  // sun text is rendered only if screen width is greater than sun_text_visible_width
 
 /* Window Information */
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
@@ -123,14 +124,16 @@ function render_sun() {
     var y = track_y;
 
     // Render the sun position text
-    ctx.textAlign = "right";
-    ctx.textBaseline = "top";
-    ctx.font = "10px monospace";
-    ctx.fillStyle = "#aaaaaa";
-    ctx.fillText("Sun ENU", width - sun_text_width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
-    ctx.fillText(sun_u.toFixed(15), width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
-    ctx.fillText(sun_v.toFixed(15), width, BLIND_START.y - roof_height + 1 * sun_text_spacing + sun_text_y_offset);
-    ctx.fillText(sun_w.toFixed(15), width, BLIND_START.y - roof_height + 2 * sun_text_spacing + sun_text_y_offset);
+    if (width > sun_text_visible_width) {
+        ctx.textAlign = "right";
+        ctx.textBaseline = "top";
+        ctx.font = "10px monospace";
+        ctx.fillStyle = "#aaaaaa";
+        ctx.fillText("Sun ENU", width - sun_text_width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
+        ctx.fillText(sun_u.toFixed(15), width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
+        ctx.fillText(sun_v.toFixed(15), width, BLIND_START.y - roof_height + 1 * sun_text_spacing + sun_text_y_offset);
+        ctx.fillText(sun_w.toFixed(15), width, BLIND_START.y - roof_height + 2 * sun_text_spacing + sun_text_y_offset);
+    }
 
     if (sun_w <= 0 && sun_u < 0) {return;}    // The sun shouldn't be rendered from evening to midnight
 
