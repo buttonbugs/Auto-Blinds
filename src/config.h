@@ -14,7 +14,7 @@
 #define MOTOR_PIN_4 7           // GPIO7 = D5
 
 /* Physical config */
-#define total_step 49152        // Total steps for the blinds to turn 180 degrees
+#define total_step 46080        // Total steps for the blinds to turn 180 degrees
 #define step_duration_ms 5      // Interval for toggling motor step in milliseconds
 #define building_angle_deg 12   // The altitude angle of the top of the building in front of the blinds in degrees
 

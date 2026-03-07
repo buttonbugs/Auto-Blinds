@@ -73,7 +73,7 @@ void update_notion_embed_block(String block_id, String url, int *response_code, 
 // Return:
 // - true: success
 // - false: failed or no command
-bool get_latest_command(bool * auto_mode, float * target, String * page_id) {
+bool get_latest_command(bool * auto_mode, float * angle, float * target, String * page_id) {
     int http_code;
     String http_body;
     fetch_notion_database(DATA_SOURCE_ID, &http_code, &http_body);
@@ -98,11 +98,11 @@ bool get_latest_command(bool * auto_mode, float * target, String * page_id) {
         // Access members inside each object
         const char* command_status = obj["properties"]["Status"]["status"]["name"];
         const char* command_page_id = obj["id"];
-        if (command_status == "Ignore") {
+        if (String(command_status) == "Ignore") {
             // Serial.println("Status: Ignore");
         } else {
             const char* command_description = obj["properties"]["Description"]["title"][0]["plain_text"];
-            if (command_description == "Auto Mode") {
+            if (String(command_description) == "Auto Mode") {
                 *auto_mode = true;
             } else {
                 *auto_mode = false;

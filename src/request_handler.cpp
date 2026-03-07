@@ -26,7 +26,7 @@ void sendHttpRequest(String method, String url, std::map<String, String> headers
 
     HTTPClient http;
     
-    Serial.printf("\n--- Sending [%s] to %s ---\n", method.c_str(), url.c_str());
+    // Serial.printf("\n--- Sending [%s] to %s ---\n", method.c_str(), url.c_str());
 
     if (http.begin(client, url)) {
         // 1. Loop through the map and add all headers

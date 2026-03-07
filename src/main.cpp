@@ -31,7 +31,7 @@ void setup() {
     angle = download_current_status();
 
     // Get latest Command
-    if(get_latest_command(&auto_mode, &target, &page_id)) {
+    if(get_latest_command(&auto_mode, &angle, &target, &page_id)) {
         Serial.println("Get Latest Command Success");
     } else {
         Serial.println("Get Latest Command Fail");
@@ -46,19 +46,18 @@ void setup() {
 
 void loop() {
     // Get latest Command
-    if(get_latest_command(&auto_mode, &target, &page_id)) {
-        Serial.println("Get Latest Command Success");
+    if(get_latest_command(&auto_mode, &angle, &target, &page_id)) {
+        // Serial.println("Get Latest Command Success");
     } else {
-        Serial.println("Get Latest Command Fail");
+        // Serial.println("Get Latest Command Fail");
     }
 
     if (auto_mode) {
         /* calculate auto_mode angle */
     }
 
-    Serial.println("Update Status");
+    // Serial.println("Update Status");
     upload_current_status(auto_mode, angle, target, sun_u, sun_v, sun_w);
-
     Serial.printf("auto_mode: %d, angle: %f, target: %f, sun_u: %lf, sun_v: %lf, sun_w: %lf\n", auto_mode, angle, target, sun_u, sun_v, sun_w);
     
     // Delay

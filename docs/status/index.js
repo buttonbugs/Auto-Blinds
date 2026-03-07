@@ -62,7 +62,7 @@ function render_blinds() {
     // Render the angle text
     ctx.font = "12px Arial";
     ctx.fillStyle = "green";
-    ctx.fillText(parameter_list["angle"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
+    ctx.fillText("Angle " + parameter_list["angle"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
 }
 
 function render_target() {
@@ -83,7 +83,7 @@ function render_target() {
     // Render the target text
     ctx.font = "12px Arial";
     ctx.fillStyle = "blue";
-    ctx.fillText(parameter_list["target"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
+    ctx.fillText("Target " + parameter_list["target"].toFixed(1) + "\u00B0", x + arrow_length * Math.cos(angle), y - arrow_length * Math.sin(angle));
 }
 
 function render_auto_mode() {
