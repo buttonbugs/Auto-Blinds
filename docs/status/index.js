@@ -14,7 +14,7 @@ const track_x = 50
 const track_y = 50
 const sun_text_y_offset = 6
 const sun_text_spacing = 12
-const sun_text_width = 106
+const sun_text_width = 110
 
 /* Window Information */
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
@@ -127,22 +127,28 @@ function render_sun() {
     ctx.textBaseline = "top";
     ctx.font = "10px monospace";
     ctx.fillStyle = "#aaaaaa";
-    ctx.fillText("Sun ENU:", width - sun_text_width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
+    ctx.fillText("Sun ENU", width - sun_text_width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
     ctx.fillText(sun_u.toFixed(15), width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
     ctx.fillText(sun_v.toFixed(15), width, BLIND_START.y - roof_height + 1 * sun_text_spacing + sun_text_y_offset);
     ctx.fillText(sun_w.toFixed(15), width, BLIND_START.y - roof_height + 2 * sun_text_spacing + sun_text_y_offset);
 
-    if (sun_w <= 0) {return;}    // The sun shouldn't be rendered at night
+    if (sun_w <= 0 && sun_u < 0) {return;}    // The sun shouldn't be rendered from evening to midnight
 
     // Calculate the x-coordinate of the intersection of the sunlight and track_y,
     // using x = m (y - y_0) + x_0, where m = dx/dz of the sunlight (i.e. dx/dy on the screen)
-    var track_y_intersection = sun_u / sun_w * (track_y - height) + BLIND_START.x;
 
-    if (track_y_intersection < track_x) {   // The sun should be render on the vertical track (Line x = track_x)
+    if (sun_w > 0) {
+        var track_y_intersection = sun_u / sun_w * (track_y - height) + BLIND_START.x;
+    
+        if (track_y_intersection < track_x) {   // The sun should be render on the vertical track (Line x = track_x)
+            // using y = k (x - x_0) + y_0, where k = dz/dx of the sunlight (i.e. dy/dx on the screen)
+            y = sun_w / sun_u * (track_x - BLIND_START.x) + height;
+        } else {                                // The sun should be render on the horizontal track (Line y = track_y)
+            x = track_y_intersection;
+        }
+    } else {
         // using y = k (x - x_0) + y_0, where k = dz/dx of the sunlight (i.e. dy/dx on the screen)
         y = sun_w / sun_u * (track_x - BLIND_START.x) + height;
-    } else {                                // The sun should be render on the horizontal track (Line y = track_y)
-        x = track_y_intersection;
     }
 
     // Render the sun drawing
