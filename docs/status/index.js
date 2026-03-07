@@ -2,6 +2,7 @@ const BLIND_NUM = 9
 const height = 320
 const roof_height = 40
 const angle_target_diff = 0.05      // Render target only if (Math.abs(angle - target) > angle_target_diff)
+const support_appearance = false
 
 var parameter_list = {}
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
@@ -38,7 +39,7 @@ function render_blinds() {
 
     // Render the blinds
     ctx.lineWidth = 2;
-    ctx.strokeStyle = isDark ? "white" : "black";
+    ctx.strokeStyle = support_appearance ? (isDark ? "white" : "black") : "gray";
     ctx.beginPath();
     ctx.moveTo(width, BLIND_START.y - roof_height);
     ctx.lineTo(x, BLIND_START.y - roof_height);
