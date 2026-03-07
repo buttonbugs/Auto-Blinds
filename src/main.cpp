@@ -9,6 +9,7 @@
 #include "wifi_handler.h"       // To handle wifi connection
 #include "notion_handler.h"
 #include "motor_controller.h"
+#include "sun_calculation.h"
 
 bool auto_mode = true;
 float angle = 0;                    // Current angle of the blinds in degrees
@@ -25,6 +26,7 @@ void setup() {
 
     // Connect to WiFi
     connect_to_wifi();
+    init_time();
 
     // Get Current status
     Serial.println("Get Current status");
@@ -42,6 +44,10 @@ void setup() {
     }
     
     init_motor_controller(&angle, &target);
+
+    // sun calcuation test
+    delay(5000);
+    get_current_time();
 }
 
 void loop() {

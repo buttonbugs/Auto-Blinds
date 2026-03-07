@@ -104,6 +104,8 @@ bool get_latest_command(bool * auto_mode, float * angle, float * target, String 
             const char* command_description = obj["properties"]["Description"]["title"][0]["plain_text"];
             if (String(command_description) == "Auto Mode") {
                 *auto_mode = true;
+            } else if (String(command_description) == "Calibration") {
+                // 
             } else {
                 *auto_mode = false;
                 *target = obj["properties"]["Target"]["number"];
@@ -124,7 +126,7 @@ float download_current_status() {
     retrieve_notion_block(NOTION_PREVIEW_BLOCK_ID, &http_code, &http_body);
 
     if (http_code == 0) {
-        Serial.print("download_current_status() http failed");
+        Serial.println("download_current_status() http failed");
         return 0;
     }
 
@@ -134,13 +136,13 @@ float download_current_status() {
     DeserializationError error = deserializeJson(doc, http_body.c_str());
 
     if (error) {
-        Serial.print("deserializeJson() failed: ");
+        Serial.println("deserializeJson() failed: ");
         Serial.println(error.f_str());
         return 0;
     }
 
     const char* block_type = doc["type"];
-    Serial.print(block_type);
+    // Serial.println(block_type);
     if (String(block_type) != "embed") {
         Serial.println("The preview block is not an 'embed'.");
         return 0;
@@ -152,8 +154,11 @@ float download_current_status() {
     /* Parse search parameter from URL */
     // 1. Find where parameters start (location.search in JavaScript)
     int queryIndex = url.indexOf('?');
-    if (queryIndex == -1) return 0; // No parameters found
-    Serial.print("download_current_status() No parameters found");
+    if (queryIndex == -1) {
+        // No parameters found
+        Serial.println("download_current_status(): No parameters found");
+        return 0;
+    }
 
     // 2. Extract only the query part
     String queryString = url.substring(queryIndex + 1);

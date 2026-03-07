@@ -2,7 +2,7 @@ const BLIND_NUM = 9
 const height = 320
 const roof_height = 40
 const angle_target_diff = 0.05      // Render target only if (Math.abs(angle - target) > angle_target_diff)
-const support_appearance = false
+const support_appearance = true
 
 var parameter_list = {}
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
