@@ -154,6 +154,8 @@ def main():
         v,
         w
     ])
+    
+    '''ENU coordinate system'''
     subsolar_vector_ENU = np.dot(Rotation_Matrix, subsolar_vector)
     print(subsolar_longitude)
     print(subsolar_vector)

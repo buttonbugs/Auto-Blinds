@@ -5,8 +5,9 @@
 #include "url_list.h"       // Get ntpServer
 #include "secret.h"         // Get local longitude and latitude
 
+/* Get time from ntpServer */
 void init_time() {
-    configTime(0, 0, ntpServer); 
+    configTime(0, 0, ntpServer);
 }
 
 /* epoch (time_t) and timeinfo (struct tm) conversion */
@@ -81,6 +82,7 @@ time_t calculate_true_vernal_equinox(int year) {
     return (true_jd - 2440587.5) * 86400;
 }
 
+/* Time percentage calculation */
 // Return the percentage of the UTC year that has passed ranging from 0.0 to 1.0
 double get_percentage_of_the_utc_year() {
     // Get current UTC time
@@ -123,6 +125,55 @@ double get_percentage_of_the_utc_day() {
     return double(now_utc_epoch - today_start_epoch) / SECONDS_PER_DAY;
 }
 
-void get_sun_position_ENU() {
-    //
+/* Matrix calculation */
+double dot_product_3(double vector_1[3], double vector_2[3]) {
+    double sum = 0;
+    for (int i = 0; i < 3; i++) {
+        sum += vector_1[i] * vector_2 [i];
+    }
+    return sum;
+}
+
+// Get current position of the Sun in ENU coordinate system
+void get_sun_position_ENU(double * sun_u, double * sun_v, double * sun_w) {
+    /* Ecliptic coordinate system */
+    double ecliptic_longitude = 2 * PI * get_percentage_of_the_utc_year();
+
+    // Caculate the Sun’s declination
+    double sin_sun_declination = - sin(ecliptic_longitude) * sin(EARTH_OBLIQUITY);
+
+    /* Earth-centered, Earth-fixed coordinate system */
+    // Calculate the subsolar point and the subsolar vector
+    double sin_subsolar_latitude = sin_sun_declination;
+    double cos_subsolar_latitude = sqrt(1 - pow(sin_sun_declination, 2));
+
+    double subsolar_longitude = - 2 * PI * (get_percentage_of_the_utc_day() - 0.5);
+
+    double subsolar_vector[3] = {
+        cos_subsolar_latitude * cos(subsolar_longitude),
+        cos_subsolar_latitude * sin(subsolar_longitude),
+        sin_subsolar_latitude
+    };
+
+    // Caculate the unit vector of observer's ENU coordinate system
+    double observer_latitude = radians(OBSERVER_LATITUDE_DEG);
+    double observer_longitude = radians(OBSERVER_LONGITUDE_DEG);
+    double u[3] = {
+        -sin(observer_longitude),
+        cos(observer_longitude),
+        0
+    };
+    double v[3] = {
+        -sin(observer_latitude) * cos(observer_longitude),
+        -sin(observer_latitude) * sin(observer_longitude),
+        cos(observer_latitude)
+    };
+    double w[3] = {
+        cos(observer_latitude) * cos(observer_longitude),
+        cos(observer_latitude) * sin(observer_longitude),
+        sin(observer_latitude)
+    };
+    *sun_u = dot_product_3(u, subsolar_vector);
+    *sun_v = dot_product_3(v, subsolar_vector);
+    *sun_w = dot_product_3(w, subsolar_vector);
 }
