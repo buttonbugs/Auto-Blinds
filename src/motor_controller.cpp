@@ -61,7 +61,3 @@ void init_motor_controller(float * angle_pt, float * target_pt) {
 void calibration(float calibration_angle) {
     current_step = calibration_angle * total_step / 180;
 }
-
-bool does_angle_reach_target() {
-    return current_step == target_step;
-}

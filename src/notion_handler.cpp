@@ -3,6 +3,7 @@
 #include <ArduinoJson.h>        // Parse JSON
 
 #include "request_handler.h"    // To handle HTTP requests
+#include "config.h"             // To get total_step
 #include "secret.h"             // Your secret file
 #include "url_list.h"           // Place to store URLs
 #include "motor_controller.h"   // For calibration
@@ -140,9 +141,22 @@ bool get_latest_command(bool * auto_mode, float * angle, float * target, String 
                         calibration(obj["properties"]["Target"]["number"]);
                     }
                 }
+                continue;   // To read the next command instead of returning true
             } else {
                 *auto_mode = false;
                 *target = obj["properties"]["Target"]["number"];
+                if (fabs(*target - *angle) < 180.0 / total_step) {
+                    if (String(command_status) != "Done") {
+                        update_notion_command_status(obj["id"], "Done", &http_code, &http_body);
+                    }
+                    
+                } else {
+                    if (String(command_status) != "Running") {
+                        update_notion_command_status(obj["id"], "Running", &http_code, &http_body);
+                    }
+                    
+                }
+                
             }
             *page_id = command_page_id;
             // Serial.println(command_description);
@@ -241,8 +255,4 @@ void upload_current_status(bool auto_mode, float angle, float target, double sun
         Serial.println("update_notion_embed_block() http failed");
     }
     // Serial.println(http_body);
-}
-
-void update_command_status(){
-    //
 }
