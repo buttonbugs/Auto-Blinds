@@ -2,6 +2,6 @@
 #define SUN_CALCULATION
 
 void init_time();
-void get_current_time();
+void get_sun_position_ENU();
 
 #endif

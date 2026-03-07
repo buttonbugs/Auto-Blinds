@@ -57,14 +57,14 @@ def calculate_true_vernal_equinox(year):
     return datetime.fromtimestamp(unix_time, tz=timezone.utc)
 
 def get_percentage_of_the_utc_year():
+    '''Return the percentage of the UTC year that has passed ranging from 0.0 to 1.0'''
     now_utc = datetime.now(timezone.utc)
     current_year = now_utc.year
     
     # Calculate the boundaries based on the current moment
     eq_this_year = calculate_true_vernal_equinox(current_year)
     
-    # If we haven't reached the equinox yet this year, 
-    # the 'start' was last year's equinox.
+    # If we haven't reached the equinox yet this year, the 'start' was last year's equinox.
     if now_utc < eq_this_year:
         year_start = calculate_true_vernal_equinox(current_year - 1)
         year_end = eq_this_year
@@ -78,7 +78,7 @@ def get_percentage_of_the_utc_year():
     return (elapsed_seconds / total_seconds)
 
 def get_percentage_of_the_utc_day():
-    '''Return the percentage of the UTC day that has passed from 0.0 to 1.0'''
+    '''Return the percentage of the UTC day that has passed ranging from 0.0 to 1.0'''
 
     # 1. Get current UTC time
     now_utc = datetime.now(timezone.utc)

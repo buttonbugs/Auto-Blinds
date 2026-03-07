@@ -47,7 +47,7 @@ void setup() {
 
     // sun calcuation test
     delay(5000);
-    get_current_time();
+    get_sun_position_ENU();
 }
 
 void loop() {

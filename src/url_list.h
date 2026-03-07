@@ -16,4 +16,7 @@
 #define github_preview_p5 "&sun_v="
 #define github_preview_p6 "&sun_w="
 
+/* Time */
+#define ntpServer "pool.ntp.org"    // Server to get current time
+
 #endif

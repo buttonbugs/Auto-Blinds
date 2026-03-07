@@ -2,7 +2,8 @@
 #define CONFIG_H
 
 /* Calculation */
-#define EARTH_OBLIQUITY 23.44           // deg, ε: Earth obliquity (axial tilt)
+#define EARTH_OBLIQUITY 23.44       // deg, Earth obliquity (axial tilt)
+#define SECONDS_PER_DAY 86400        // The number of seconds per day
 
 /* Pin config */
 // Stepper motor signal pins
@@ -20,6 +21,5 @@
 
 /* Software */
 #define request_delay_ms 10         // delay between two groups of Notion API requests in millisenconds
-#define ntpServer "pool.ntp.org"    // Server to get current time
 
 #endif
