@@ -25,12 +25,16 @@ void set_interval(void *pvParameters) {
         // Compare target_step and current_step to increase or decrease current_step
         if (target_step > current_step) {
             current_step++;
+            set_motor_phase(current_step % 4);
+
         } else if (target_step < current_step) {
             current_step--;
-        }
+            set_motor_phase(current_step % 4);
 
-        // Set motor phase
-        set_motor_phase(current_step % 4);
+        } else {
+            // (Optional) Turn off all LEDs on the motor driver
+            set_motor_phase(5);
+        }
 
         // Update angle so that it can be synced to Notion preview
         *angle_pt_local = current_step * 180.0F / total_step;
@@ -52,4 +56,12 @@ void init_motor_controller(float * angle_pt, float * target_pt) {
     pinMode(MOTOR_PIN_3, OUTPUT);
     pinMode(MOTOR_PIN_4, OUTPUT);
     xTaskCreate(set_interval, "motor", 2048, NULL, 1, NULL);
+}
+
+void calibration(float calibration_angle) {
+    current_step = calibration_angle * total_step / 180;
+}
+
+bool does_angle_reach_target() {
+    return current_step == target_step;
 }

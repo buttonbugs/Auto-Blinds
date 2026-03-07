@@ -5,6 +5,7 @@
 #include "request_handler.h"    // To handle HTTP requests
 #include "secret.h"             // Your secret file
 #include "url_list.h"           // Place to store URLs
+#include "motor_controller.h"   // For calibration
 
 /* Http Request Templates */
 void fetch_notion_database(String data_source_id, int *response_code, String *response_body) {
@@ -68,6 +69,32 @@ void update_notion_embed_block(String block_id, String url, int *response_code, 
     sendHttpRequest("PATCH", String(notion_block_url) + block_id, notionHeaders, notionBody, response_code, response_body);
 }
 
+void update_notion_command_status(String page_id, String status, int *response_code, String *response_body) {
+    // 2. Define your Headers (Notion example)
+    std::map<String, String> notionHeaders;
+    notionHeaders["Authorization"] = "Bearer " + String(NOTION_TOKEN);
+    notionHeaders["Notion-Version"] = "2025-09-03";
+    notionHeaders["Content-Type"] = "application/json";
+
+    // 3. Define your Body (Create a page in a database)
+    // Using raw strings (R"(...)") makes JSON much easier to read in C++
+    String notionBody = R"({
+        "properties": {
+            "Status": {
+                "status": {
+                    "name": ")";
+    notionBody += status;
+    notionBody += R"("
+                }
+            }
+        }
+    })";
+
+    // 4. Fire the request!
+    sendHttpRequest("PATCH", String(notion_update_page_url) + page_id, notionHeaders, notionBody, response_code, response_body);
+    //
+}
+
 /* Http Data Processing */
 // Get lastest command from Notion database.
 // Return:
@@ -105,7 +132,14 @@ bool get_latest_command(bool * auto_mode, float * angle, float * target, String 
             if (String(command_description) == "Auto Mode") {
                 *auto_mode = true;
             } else if (String(command_description) == "Calibration") {
-                // 
+                if (String(command_status) == "Queue") {
+                    // set the angle and set the status to Done to avoid loop
+                    update_notion_command_status(obj["id"], "Done", &http_code, &http_body);
+                    Serial.println(http_body);
+                    if (http_code > 0) {
+                        calibration(obj["properties"]["Target"]["number"]);
+                    }
+                }
             } else {
                 *auto_mode = false;
                 *target = obj["properties"]["Target"]["number"];
