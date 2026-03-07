@@ -13,6 +13,9 @@ const BLIND_START = {x: middle_x - 0, y: 140, angle_offset: 5, length_offset: 5}
 // Reset body width
 document.body.style.width = width + "px"
 
+// Background appearce
+document.body.style.backgroundColor = support_appearance ? (isDark ? "#191919" : "white") : ""
+
 // Setup Canvas
 const canvas = document.createElement("canvas");
 canvas.width = width;

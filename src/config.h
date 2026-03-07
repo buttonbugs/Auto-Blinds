@@ -19,7 +19,7 @@
 #define building_angle_deg 12       // The altitude angle of the top of the building in front of the blinds in degrees
 
 /* Software */
-#define request_delay_ms 1000       // delay between two groups of Notion API requests in millisenconds
+#define request_delay_ms 10         // delay between two groups of Notion API requests in millisenconds
 #define ntpServer "pool.ntp.org"    // Server to get current time
 
 #endif
