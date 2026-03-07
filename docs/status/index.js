@@ -1,20 +1,33 @@
+/* Config */
 const BLIND_NUM = 9
 const height = 320
 const roof_height = 40
 const angle_target_diff = 0.05      // Render target only if (Math.abs(angle - target) > angle_target_diff)
 const support_appearance = true
 
-var parameter_list = {}
+// Sun drawing config
+const draw_sun_radius = 18
+const draw_line_start_radius = 24
+const draw_line_end_radius = 32
+const draw_line_number = 12
+const track_x = 50
+const track_y = 50
+
+/* Window Information */
 const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches        // Get Appearance
 const width = window.innerWidth
 const middle_x = Math.round(width / 2)
 const BLIND_START = {x: middle_x - 0, y: 140, angle_offset: 5, length_offset: 5}
+
+// URL parameter list
+var parameter_list = {}
 
 // Reset body width
 document.body.style.width = width + "px"
 
 // Background appearce
 document.body.style.backgroundColor = support_appearance ? (isDark ? "#191919" : "white") : ""
+const default_stroke_style = support_appearance ? (isDark ? "white" : "black") : "gray";
 
 // Setup Canvas
 const canvas = document.createElement("canvas");
@@ -27,6 +40,7 @@ const ctx = canvas.getContext("2d");
 function map(original_value, from_low, from_high, to_low, to_high) {
     return to_low + (original_value - from_low) * (to_high - to_low) / (from_high - from_low);
 }
+
 
 function render_default() {
     ctx.textAlign = "center";
@@ -42,7 +56,7 @@ function render_blinds() {
 
     // Render the blinds
     ctx.lineWidth = 2;
-    ctx.strokeStyle = support_appearance ? (isDark ? "white" : "black") : "gray";
+    ctx.strokeStyle = default_stroke_style;
     ctx.beginPath();
     ctx.moveTo(width, BLIND_START.y - roof_height);
     ctx.lineTo(x, BLIND_START.y - roof_height);
@@ -97,6 +111,45 @@ function render_auto_mode() {
     ctx.fillText(parameter_list["auto_mode"] ? "Auto Mode" : "Manual Mode", 0, height);
 }
 
+function render_sun() {
+    const sun_u = parameter_list["sun_u"];
+    const sun_v = parameter_list["sun_v"];
+    const sun_w = parameter_list["sun_w"];
+
+    var x = track_x;
+    var y = track_y;
+
+    // Render the sun position text
+
+    if (sun_w <= 0) {return;}    // The sun shouldn't be rendered at night
+
+    // Calculate the x-coordinate of the intersection of the sunlight and track_y,
+    // using x = m (y - y_0) + x_0, where m = dx/dz of the sunlight (i.e. dx/dy on the screen)
+    var track_y_intersection = sun_u / sun_w * (track_y - height) + BLIND_START.x;
+
+    if (track_y_intersection < track_x) {   // The sun should be render on the vertical track (Line x = track_x)
+        // using y = k (x - x_0) + y_0, where k = dz/dx of the sunlight (i.e. dy/dx on the screen)
+        y = sun_w / sun_u * (track_x - BLIND_START.x) + height;
+    } else {                                // The sun should be render on the horizontal track (Line y = track_y)
+        x = track_y_intersection;
+    }
+
+    // Render the sun drawing
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = default_stroke_style;
+    ctx.beginPath();
+    ctx.arc(x, y, draw_sun_radius, 0, 2 * Math.PI);
+    
+    // Render the sun line drawing (the lines around the sun)
+    for (let i = 0; i < draw_line_number; i++) {
+        const theta = 2 * Math.PI * i / draw_line_number;
+        ctx.moveTo(x + draw_line_start_radius * Math.cos(theta), y + draw_line_start_radius * Math.sin(theta));
+        ctx.lineTo(x + draw_line_end_radius * Math.cos(theta), y + draw_line_end_radius * Math.sin(theta));
+    }
+
+    ctx.stroke();
+}
+
 function render() {
     try {
         // Check if "angle" exists
@@ -114,7 +167,7 @@ function render() {
         // Check if "target" exists
         if (parameter_list["target"]) {
             if (Number.isFinite( +parameter_list["target"] )) {
-                parameter_list["target"] *= 1
+                parameter_list["target"] *= 1;
                 if (Math.abs(parameter_list["angle"] - parameter_list["target"]) > angle_target_diff) {
                     render_target();
                 }
@@ -140,6 +193,14 @@ function render() {
         } else {
             parameter_list["auto_mode"] = false;
             console.log("Parameter 'auto_mode' not found");
+        }
+
+        // Check if sun position exists
+        if (parameter_list["sun_u"] && parameter_list["sun_v"] && parameter_list["sun_w"]) {
+            parameter_list["sun_u"] *= 1;
+            parameter_list["sun_v"] *= 1;
+            parameter_list["sun_w"] *= 1;
+            render_sun();
         }
     } catch (error) {
         console.log(error);
