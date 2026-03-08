@@ -100,7 +100,7 @@ Note: $ϕ_o$ is the [geodetic latitude](https://en.wikipedia.org/wiki/Geodetic_c
 
 Then the coordinate system needs to be transformed into the observer’s coordinate system.
 
-The **horizontal coordinate system** [^8] is commonly used to represent the position of the sun [^7] [^9]. However, since the blinds and the roof edges mentioned in Background and Motivation are parallel to the lines of latitude and longitude, we should use the local **east-north-up (ENU)** [^10] coordinate system.
+The **horizontal coordinate system** [^8] is commonly used to represent the position of the sun [^7] [^9]. However, since the blinds and the roof edges mentioned in [Background and Motivation](#background-and-motivation) are parallel to the lines of latitude and longitude, we should use the local **east-north-up (ENU)** [^10] coordinate system.
 
 The unit vectors of the **ENU** coordinate system **expressed in** the **ECEF** coordinate system ($\hat{u}$, $\hat{v}$ and $\hat{w}$) can be calculated based on the normalized observer vector (${\hat{u}}_o$):
 
