@@ -137,21 +137,23 @@ function render_sun() {
 
     if (sun_w <= 0 && sun_u < 0) {return;}    // The sun shouldn't be rendered from evening to midnight
 
+    const blind_half_length = (height - BLIND_START.y) / BLIND_NUM / 2;
+    const mid_blind_y = BLIND_START.y + blind_half_length * (2 * Math.trunc(BLIND_NUM/2) + 1);
     // Calculate the x-coordinate of the intersection of the sunlight and track_y,
     // using x = m (y - y_0) + x_0, where m = dx/dz of the sunlight (i.e. dx/dy on the screen)
 
     if (sun_w > 0) {
-        var track_y_intersection = sun_u / sun_w * (track_y - height) + BLIND_START.x;
+        var track_y_intersection = sun_u / sun_w * (track_y - mid_blind_y) + BLIND_START.x;
     
         if (track_y_intersection < track_x) {   // The sun should be render on the vertical track (Line x = track_x)
             // using y = k (x - x_0) + y_0, where k = dz/dx of the sunlight (i.e. dy/dx on the screen)
-            y = sun_w / sun_u * (track_x - BLIND_START.x) + height;
+            y = sun_w / sun_u * (track_x - BLIND_START.x) + mid_blind_y;
         } else {                                // The sun should be render on the horizontal track (Line y = track_y)
             x = track_y_intersection;
         }
     } else {
         // using y = k (x - x_0) + y_0, where k = dz/dx of the sunlight (i.e. dy/dx on the screen)
-        y = sun_w / sun_u * (track_x - BLIND_START.x) + height;
+        y = sun_w / sun_u * (track_x - BLIND_START.x) + mid_blind_y;
     }
 
     // Render the sun drawing
