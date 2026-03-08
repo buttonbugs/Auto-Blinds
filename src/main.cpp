@@ -39,15 +39,15 @@ void setup() {
         Serial.println("Get Latest Command Fail");
     }
 
+    get_sun_position_ENU(&sun_u, &sun_v, &sun_w);
     if (auto_mode) {
-        /* calculate auto_mode angle */
+        target = get_auto_mode_target(sun_u, sun_v, sun_w);
     }
     
     init_motor_controller(&angle, &target);
 
     // sun calcuation test
     delay(500);
-    get_sun_position_ENU(&sun_u, &sun_v, &sun_w);
 }
 
 void loop() {
@@ -57,13 +57,13 @@ void loop() {
     } else {
         // Serial.println("Get Latest Command Fail");
     }
-
+    
+    get_sun_position_ENU(&sun_u, &sun_v, &sun_w);
     if (auto_mode) {
-        /* calculate auto_mode angle */
+        target = get_auto_mode_target(sun_u, sun_v, sun_w);
     }
 
     // Serial.println("Update Status");
-    get_sun_position_ENU(&sun_u, &sun_v, &sun_w);
     upload_current_status(auto_mode, angle, target, sun_u, sun_v, sun_w);
     Serial.printf("auto_mode: %d, angle: %f, target: %f, sun_u: %.15lf, sun_v: %.15lf, sun_w: %.15lf\n", auto_mode, angle, target, sun_u, sun_v, sun_w);
     

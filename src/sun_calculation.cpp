@@ -11,23 +11,25 @@ void init_time() {
 }
 
 /* epoch (time_t) and timeinfo (struct tm) conversion */
-time_t get_utc_epoch() {
+// Get UTC time epoch
+time_t get_epoch() {
     time_t now;
     time(&now);
     return now;
 }
 
-time_t get_utc_epoch(struct tm timeinfo) {
+time_t get_epoch(struct tm timeinfo) {
     return mktime(&timeinfo);
 }
 
-struct tm get_utc_timeinfo() {
+// Get UTC timeinfo
+struct tm get_timeinfo() {
     struct tm timeinfo;
     getLocalTime(&timeinfo);
     return timeinfo;
 }
 
-struct tm get_utc_timeinfo(time_t epoch) {
+struct tm get_timeinfo(time_t epoch) {
     struct tm * timeinfo;
     timeinfo = gmtime(&epoch);
     return *timeinfo;
@@ -86,9 +88,8 @@ time_t calculate_true_vernal_equinox(int year) {
 // Return the percentage of the UTC year that has passed ranging from 0.0 to 1.0
 double get_percentage_of_the_utc_year() {
     // Get current UTC time
-    time_t now_utc_epoch = get_utc_epoch();
-    struct tm *now_utc_timeinfo;
-    now_utc_timeinfo = gmtime(&now_utc_epoch);
+    time_t now_utc_epoch = get_epoch();
+    struct tm *now_utc_timeinfo = gmtime(&now_utc_epoch);
 
     // Get current year
     int current_year = now_utc_timeinfo->tm_year + 1900;    // 	"timeinfo.tm_year = 126" means "year = 2026"
@@ -116,7 +117,7 @@ double get_percentage_of_the_utc_year() {
 // Return the percentage of the UTC day that has passed ranging from 0.0 to 1.0
 double get_percentage_of_the_utc_day() {
     // 1. Get current UTC time
-    time_t now_utc_epoch = get_utc_epoch();
+    time_t now_utc_epoch = get_epoch();
     
     // 2. Define the start of today (UTC Midnight)
     time_t today_start_epoch = now_utc_epoch / SECONDS_PER_DAY * SECONDS_PER_DAY;
@@ -134,6 +135,7 @@ double dot_product_3(double vector_1[3], double vector_2[3]) {
     return sum;
 }
 
+/* Sun position calculation */
 // Get current position of the Sun in ENU coordinate system
 void get_sun_position_ENU(double * sun_u, double * sun_v, double * sun_w) {
     /* Ecliptic coordinate system */
@@ -176,4 +178,50 @@ void get_sun_position_ENU(double * sun_u, double * sun_v, double * sun_w) {
     *sun_u = dot_product_3(u, subsolar_vector);
     *sun_v = dot_product_3(v, subsolar_vector);
     *sun_w = dot_product_3(w, subsolar_vector);
+}
+
+/* Target angle calculation */
+// Return the target angle in auto mode based on the sun position (sun_u, sun_v, sun_w) and current time.
+// This function can be fully customized depending on your needs and daily routine
+double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
+
+    // Get epoch in local time zone
+    time_t now_local_epoch = get_epoch() + TIME_ZONE * SECONDS_PER_HOUR;
+
+    // Create several copies of now_local_timeinfo
+    struct tm wakeup_local_timeinfo = get_timeinfo(now_local_epoch);
+    struct tm sleep_local_timeinfo = wakeup_local_timeinfo;
+
+    // Set your daily routine
+    // Notice: you must set all tm_hour, tm_min and tm_sec
+    // Otherwise, tm_sec will follow current tm_sec, causing comparison bugs
+    wakeup_local_timeinfo.tm_hour = wakeup_hour;
+    wakeup_local_timeinfo.tm_min = wakeup_min;
+    wakeup_local_timeinfo.tm_sec = wakeup_sec;
+    sleep_local_timeinfo.tm_hour = sleep_hour;
+    sleep_local_timeinfo.tm_min = sleep_min;
+    sleep_local_timeinfo.tm_sec = sleep_sec;
+
+    // Convert timeinfo to epoch for time comparison
+    time_t wakeup_local_epoch = get_epoch(wakeup_local_timeinfo);
+    time_t sleep_local_epoch = get_epoch(sleep_local_timeinfo);
+
+    // Customize your daily routine
+    // Check if sleeping
+    if (now_local_epoch < wakeup_local_epoch || now_local_epoch > sleep_local_epoch) {
+        // Sleeping
+        return 0.0;
+
+    } else {
+        // Check if the sun is in front of the blinds
+        if (sun_u > 0 && sun_w > 0) {
+            double alpha = atan(sun_w / sun_u);
+            if (alpha > radians(building_angle_deg)) { // when the sun rises from the top of the building in front of the blinds
+                double beta = acos(blind_spacing * cos(alpha) / blind_width) - alpha;
+                double theta = PI - beta;
+                return degrees(theta);
+            }
+        }
+    }
+    return 90.0;
 }
