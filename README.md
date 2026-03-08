@@ -98,9 +98,11 @@ where:
 
 Note: $ϕ_o$ is the [geodetic latitude](https://en.wikipedia.org/wiki/Geodetic_coordinates) of the observer. However, $ϕ_s$ is the [geocentric latitude](https://en.wikipedia.org/wiki/Latitude#Geocentric_latitude) of the Sun, ignoring the [parallax effect](https://en.wikipedia.org/wiki/Parallax).
 
-Then the coordinate system needs to be transformed into the observer’s coordinate system. Since the roof edges mentioned in Background and Motivation are parallel to the lines of latitude and longitude, the **local east-north-up (ENU)** [^8] coordinate system, instead of the **horizontal coordinate system** [^9], should be used to represent the Sun’s position.
+Then the coordinate system needs to be transformed into the observer’s coordinate system.
 
-Therefore, the unit vectors of the **ENU** coordinate system **expressed in** the **ECEF** coordinate system ($\hat{u}$, $\hat{v}$ and $\hat{w}$) can be calculated based on the normalized observer vector (${\hat{u}}_o$):
+The **horizontal coordinate system** [^8] is commonly used to represent the position of the sun [^9]. However, since the blinds and the roof edges mentioned in Background and Motivation are parallel to the lines of latitude and longitude, we should use the local **east-north-up (ENU)** [^10] coordinate system.
+
+The unit vectors of the **ENU** coordinate system **expressed in** the **ECEF** coordinate system ($\hat{u}$, $\hat{v}$ and $\hat{w}$) can be calculated based on the normalized observer vector (${\hat{u}}_o$):
 
 ```math
 \begin{aligned}
@@ -168,8 +170,10 @@ a_s\prime =
 
 [^7]: T. Zhang, P. W. Stackhouse Jr, B. Macpherson, and J. C. Mikovitz, [“A solar azimuth formula that renders circumstantial treatment unnecessary without compromising mathematical rigor: Mathematical setup, application and extension of a formula based on the subsolar point and atan2 function,”](https://www.sciencedirect.com/science/article/pii/S0960148121004031) *Renew. Energy*, vol. 172, pp. 1333–1340, 2021.
 
-[^8]: “Local tangent plane coordinates,” *Wikipedia*. Feb. 13, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Local_tangent_plane_coordinates&oldid=1275515987
+[^8]: “Horizontal coordinate system,” *Wikipedia*. Jan. 07, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Horizontal_coordinate_system&oldid=1267888614
 
-[^9]: “Horizontal coordinate system,” *Wikipedia*. Jan. 07, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Horizontal_coordinate_system&oldid=1267888614
+[^9]: R. Walraven, [“Calculating the position of the sun,”](https://www.sciencedirect.com/science/article/pii/0038092X7890155X) *Sol. Energy*, vol. 20, no. 5, pp. 393–397, 1978.
 
-[^10]: “Geographic coordinate conversion,” *Wikipedia*. Dec. 22, 2025. Accessed: Mar. 04, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Geographic_coordinate_conversion&oldid=1328905303#From_ECEF_to_ENU
+[^10]: “Local tangent plane coordinates,” *Wikipedia*. Feb. 13, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Local_tangent_plane_coordinates&oldid=1275515987
+
+[^11]: “Geographic coordinate conversion,” *Wikipedia*. Dec. 22, 2025. Accessed: Mar. 04, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Geographic_coordinate_conversion&oldid=1328905303#From_ECEF_to_ENU
