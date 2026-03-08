@@ -132,6 +132,15 @@ bool get_latest_command(bool * auto_mode, float * angle, float * target, String 
             const char* command_description = obj["properties"]["Description"]["title"][0]["plain_text"];
             if (String(command_description) == "Auto Mode") {
                 *auto_mode = true;
+                if (fabs(*target - *angle) < 180.0 / total_step) {
+                    if (String(command_status) != "Done") {
+                        update_notion_command_status(obj["id"], "Done", &http_code, &http_body);
+                    }
+                } else {
+                    if (String(command_status) != "Running") {
+                        update_notion_command_status(obj["id"], "Running", &http_code, &http_body);
+                    }
+                }
             } else if (String(command_description) == "Calibration") {
                 if (String(command_status) == "Queue") {
                     // set the angle and set the status to Done to avoid loop
@@ -149,12 +158,10 @@ bool get_latest_command(bool * auto_mode, float * angle, float * target, String 
                     if (String(command_status) != "Done") {
                         update_notion_command_status(obj["id"], "Done", &http_code, &http_body);
                     }
-                    
                 } else {
                     if (String(command_status) != "Running") {
                         update_notion_command_status(obj["id"], "Running", &http_code, &http_body);
                     }
-                    
                 }
                 
             }
