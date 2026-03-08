@@ -8,7 +8,7 @@
 
 <p align="center">
   <br>
-  <h6>Fig. 1. The blinds adjusts the orientation automatically based on time and the Sun's position.</h6>
+  <sub>Fig. 1. The blinds adjusts the orientation automatically based on time and the Sun's position.</sub>
 </p>
 
 ### Manual Mode
@@ -16,7 +16,7 @@
 <p align="center">
   <img src="README/preview_1.gif" alt="Preiew Image" width="72%"/>
   <br>
-  Fig. 2. The blinds are controlled on phones.
+  <sub>Fig. 2. The blinds are controlled on phones.</sub>
 </p>
 
 ## Background and Motivation
