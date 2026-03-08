@@ -128,7 +128,7 @@ Subsequently, the Rotation Matrix ($R$) of the coordinate system transformation 
 R=\left[\begin{matrix}\hat{u}\\\hat{v}\\\hat{w}\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]
 ```
 
-Applying the Rotation Matrix ($R$) to the normalized observer vector (${\hat{u}}_o$) gives the subsolar vector in the ENU coordinate system (${\hat{u}}_s\prime$) [^10]:
+Applying the Rotation Matrix ($R$) to the normalized observer vector (${\hat{u}}_o$) gives the subsolar vector in the ENU coordinate system (${\hat{u}}_s\prime$) [^11]:
 
 ```math
 {\hat{u}}_s\prime=R{\hat{u}}_s=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]\left[\begin{matrix}\cos{(\phi_s)}\,\cos{(\lambda_s)}\\\cos{(\phi_s)}\,\sin{(\lambda_s)}\\\sin{(\phi_s)}\\\end{matrix}\right]
