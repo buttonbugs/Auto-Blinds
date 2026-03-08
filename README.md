@@ -160,6 +160,60 @@ a_s\prime =
 \end{cases}
 ```
 
+## Blind Orientation Calculation
+
+After the Sun rises from the top of the building, the blind target orientation ($θ$) is calculated to block the sunlight.
+
+For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 3.
+
+<p align="center">
+  <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
+  <br>
+  <sub>Fig. 3. A vertical cross section of the blinds and the sunlight. The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. <i>AC</i> and <i>BC</i> are constants, where <i>AC</i> is the width of a blind and <i>BC</i> is the vertical distance between two blinds.</sub>
+</p>
+
+According to the geometric relations, we have
+
+```math
+\begin{aligned}
+\angle ABC=\frac{\pi}{2}-\alpha\\
+\angle ACB=\beta
+\end{aligned}
+```
+
+Based on the sum of the interior angles of triangle ABC,
+
+```math
+\angle BAC=\pi-\angle ABC-\angle ACB=\frac{\pi}{2}+\alpha-\beta
+```
+
+Applying the Law of Sines in triangle ABC,
+
+```math
+\frac{BC}{\sin{\left(\frac{\pi}{2}+\alpha-\beta\right)}}=\frac{AC}{\sin{\left(\frac{\pi}{2}-\alpha\right)}}
+```
+
+Therefore,
+
+```math
+\cos{\left(\alpha-\beta\right)}=\frac{BC}{AC}\cos{\left(\alpha\right)}
+```
+
+In this case $\beta>\alpha$, so
+
+```math
+\begin{aligned}
+\beta-\alpha=\arccos{\left(\frac{BC}{AC}\cos{\left(\alpha\right)}\right)}\\
+\beta=\arccos{\left(\frac{BC}{AC}\cos{\left(\alpha\right)}\right)}-\alpha
+\end{aligned}
+```
+
+Finally, since $\beta$ equals the complementary angle of the blind target orientation ($\theta$), we have
+
+```math
+\theta=\pi-\beta=\pi-\arccos{\left(\frac{BC}{AC}\cos{\left(\alpha\right)}\right)}+\alpha
+```
+
 ### References
 
 [^1]: “Getting Started with Seeed Studio XIAO ESP32C3 | Seeed Studio Wiki.” Accessed: Feb. 27, 2026. [Online]. Available: https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/
