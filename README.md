@@ -169,7 +169,7 @@ For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-pl
 <p align="center">
   <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
   <br>
-  <sub>Fig. 3. A vertical cross section of the blinds and the sunlight. The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. <i>AC</i> and <i>BC</i> are constants, where <i>AC</i> is the width of a blind and <i>BC</i> is the vertical distance between two blinds.</sub>
+  <sub>Fig. 3. A vertical cross section of the blinds and the sunlight.<br>The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. <i>AC</i> and <i>BC</i> are constants, where <i>AC</i> is the width of a blind and <i>BC</i> is the vertical distance between two blinds.</sub>
 </p>
 
 According to the geometric relations, we have
