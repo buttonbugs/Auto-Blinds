@@ -206,6 +206,10 @@ double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
     time_t wakeup_local_epoch = get_epoch(wakeup_local_timeinfo);
     time_t sleep_local_epoch = get_epoch(sleep_local_timeinfo);
 
+    // Consider event time offset
+    wakeup_local_epoch -= event_time_offset_s;
+    sleep_local_epoch -= event_time_offset_s;
+
     // Customize your daily routine
     // Check if sleeping
     if (now_local_epoch < wakeup_local_epoch || now_local_epoch > sleep_local_epoch) {

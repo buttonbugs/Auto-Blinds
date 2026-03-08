@@ -27,6 +27,9 @@
 #define blind_spacing 21.5          // The vertical distance between two blinds
 
 /* Software */
-#define request_delay_ms 10         // delay between two groups of Notion API requests in millisenconds
+#define request_delay_ms 10         // Delay between two groups of Notion API requests in millisenconds
+
+/* Daily routine */
+#define event_time_offset_s 30      // The target will change this much time in advance before an event in your daily routine
 
 #endif
