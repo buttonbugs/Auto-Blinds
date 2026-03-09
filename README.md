@@ -41,7 +41,7 @@
 
 **Directory:** [docs/status/](docs/status/)
 
-Note: A Notion page, where there are buttons and Notion database, is used as the interface for users to control the blinds on their phones. A [github webpage](docs/status/) is embedded in the Notion page to provide a real-time preview of the orientation of the blinds and the current position of the Sun.
+Note: A Notion page, where there are buttons and Notion database, is used as the interface for users to control the blinds on their phones. A [github webpage](docs/status/) is embedded in the Notion page to provide a real-time preview of the orientation of the blinds and the dynamic position of the Sun.
 
 ### Algorithm Tests
 
@@ -81,7 +81,7 @@ $$
 \sin{\\,\delta}&=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{n}}_{NCP}\right)\right]}\\
 &=\cos{\angle(-{\hat{r}}_{SE},{\hat{n}}_{NCP})}\\
 &=\frac{{\hat{n}}_{NCP}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{n}}_{NCP}\right|\left|{\hat{r}}_{SE}\right|}\\
-&=-\left[\begin{matrix} \cos{\\,\lambda_\odot}\\\\ \sin{\\,\lambda_\odot}\\\\0\end{matrix}\right]\bullet\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
+&=-\left[\begin{matrix} \cos{\\,\lambda_\odot}\\\\ \sin{\\,\lambda_\odot}\\\\0\end{matrix}\right]\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
 &=-\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon}.
 \end{aligned}
 $$
