@@ -41,9 +41,9 @@
 
 **Directory:** [docs/status/](docs/status/)
 
-Note: A Notion page, where there are buttons and Notion database, is used as the interface for users to control the blinds on their phones. A [github webpage](https://buttonbugs.github.io/Auto-Blinds/status/?auto_mode=true&angle=90.000000&target=90.000000&sun_u=0.328183012747213&sun_v=-0.1653516528262642&sun_w=0.6052702702063952), whose directory is [docs/status/](docs/status/), is embedded in the Notion page to provide a real-time preview of the orientation of the blinds and the current position of the Sun.
+Note: A Notion page, where there are buttons and Notion database, is used as the interface for users to control the blinds on their phones. A [github webpage](docs/status/) is embedded in the Notion page to provide a real-time preview of the orientation of the blinds and the current position of the Sun.
 
-### Algorithm Testing
+### Algorithm Tests
 
 **Language:** Python
 
