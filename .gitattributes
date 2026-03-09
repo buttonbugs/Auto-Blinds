@@ -1,3 +1,4 @@
 README/preview_1.gif filter=lfs diff=lfs merge=lfs -text
 *.h linguist-language=C++
-docs/* linguist-documentation=false
+docs/** linguist-documentation=false
+docs/** linguist-detectable=true
