@@ -27,27 +27,27 @@
 
 ### Electronics
 
-**Microcontroller:** Seeed Studio XIAO-ESP32-C3 [^1] [^2]
+- **Microcontroller:** Seeed Studio XIAO-ESP32-C3 [^1] [^2]
 
-**Motor:** 28BYJ-48 stepper motor
+- **Motor:** 28BYJ-48 stepper motor
 
-**Language:** C++, Notion API
+- **Language:** C++, Notion API
 
-**Directory:** [src/](src/)
+- **Directory:** [src/](src/)
 
 ### User Interface
 
-**Language:** Notion, HTML, JavaScript, CSS
+- **Language:** Notion, HTML, JavaScript, CSS
 
-**Directory:** [docs/status/](docs/status/)
+- **Directory:** [docs/status/](docs/status/)
 
 Note: A Notion page, where there are buttons and Notion database, is used as the interface for users to control the blinds on their phones. A [github webpage](docs/status/) is embedded in the Notion page to provide a real-time preview of the orientation of the blinds and the dynamic position of the Sun.
 
 ### Algorithm Tests
 
-**Language:** Python
+- **Language:** Python
 
-**Directory:** [local_debug/](local_debug/)
+- **Directory:** [local_debug/](local_debug/)
 
 ## ENU Analemma Calculation
 
