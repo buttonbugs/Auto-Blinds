@@ -23,13 +23,29 @@
 
 ...
 
-## Development
+## Basic Information
 
-**Board:** [Seeed Studio XIAO-ESP32-C3](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/) [^1] [^2]
+### Electronics
 
-**VS Code Extension:** [PlatformIO IDE](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
+**Microcontroller:** Seeed Studio XIAO-ESP32-C3 [^1] [^2]
 
-**Framework:** Arduino
+**Motor:** 28BYJ-48 stepper motor
+
+**Language:** C++, Notion API
+
+**Directory:** [src/](src/)
+
+### User Interface
+
+**Language:** Notion, HTML, JavaScript, CSS
+
+**Directory:** [docs/status/](docs/status/)
+
+### Algorithm Testing
+
+**Language:** Python
+
+**Directory:** [local_debug/](local_debug/)
 
 ## ENU Analemma Calculation
 
