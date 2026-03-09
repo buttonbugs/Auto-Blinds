@@ -33,7 +33,7 @@
 
 ## ENU Analemma Calculation
 
-**Ecliptic coordinate system** [^3] is used to calculate the Sun’s declination ($\delta$) [^4], where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system.
+[Ecliptic coordinate system](https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308) is used to calculate the Sun’s [declination](https://en.wikipedia.org/w/index.php?title=Declination&oldid=1276361201) ($\delta$), where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system. Notably, Jean Meeus’s Algorithm [^3] is used to calculate the approximate time of the vernal equinox in this project (also see [local_debug/analemma_ENU.py](local_debug/analemma_ENU.py)).
 
 Since
 
@@ -76,22 +76,22 @@ where:
 
 - $\delta$ is the Sun’s declination
 
-- $\lambda_\odot$ is the ecliptic longitude of Earth [^3]
+- $\lambda_\odot$ is the [ecliptic longitude](https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308) of Earth
 
 - $\varepsilon$ is the obliquity of Earth
 
-Since the subsolar latitude ($\phi_s$) [^5] is the same as the Sun’s declination ($\delta$) [^4], we have
+Since the [subsolar latitude](https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706) ($\phi_s$) is the same as the Sun’s declination ($\delta$), we have
 
 $$\phi_s=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
 
-In the **Earth-centered, Earth-fixed coordinate system** (ECEF) [^6], the subsolar vector (${\hat{u}}_s$) can be calculated as:
+In the [Earth-centered, Earth-fixed coordinate system](https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982) (ECEF), the subsolar vector (${\hat{u}}_s$) can be calculated as:
 
 $${\hat{u}}_s=\left[\begin{matrix}\\,\cos{(\phi_s)}\\,\cos{(\lambda_s)}\\\\ \cos{(\phi_s)}\\,\sin{(\lambda_s)}\\\\ \sin{(\phi_s)}\\ \end{matrix}\right]$$
 
 where:
 
 - $\phi_s$ is the subsolar latitude
-- $\lambda_s$ is the subsolar longitude, which can be calculated according to the current time ($T_{UTC}$) using the following formula [^7]:
+- $\lambda_s$ is the subsolar longitude, which can be calculated according to the current time ($T_{UTC}$) using the following formula [^4]:
 
 $$\lambda_s=-15\\,(T_{UTC}-12)$$
 
@@ -106,7 +106,7 @@ where:
 
 Note: $ϕ_o$ is the [geodetic latitude](https://en.wikipedia.org/wiki/Geodetic_coordinates) of the observer. However, $ϕ_s$ is the [geocentric latitude](https://en.wikipedia.org/wiki/Latitude#Geocentric_latitude) of the Sun, ignoring the [parallax effect](https://en.wikipedia.org/wiki/Parallax).
 
-Then the coordinate system needs to be transformed into the observer’s coordinate system. The **horizontal coordinate system** [^8] is commonly used to represent the position of the sun [^7] [^9]. However, since the blinds and the roof edges mentioned in [Background and Motivation](#background-and-motivation) are parallel to the lines of latitude and longitude, we should use the local **east-north-up (ENU)** [^10] coordinate system.
+Then the coordinate system needs to be transformed into the observer’s coordinate system. The [horizontal coordinate system](https://en.wikipedia.org/w/index.php?title=Horizontal_coordinate_system&oldid=1267888614) is commonly used to represent the position of the sun [^4] [^5]. However, since the blinds and the roof edges mentioned in [Background and Motivation](#background-and-motivation) are parallel to the lines of latitude and longitude, we should use the local [east-north-up](https://en.wikipedia.org/w/index.php?title=Local_tangent_plane_coordinates&oldid=1275515987#Local_east,_north,_up_(ENU)_coordinates) (ENU) coordinate system.
 
 The unit vectors of the **ENU** coordinate system **expressed in** the **ECEF** coordinate system ($\hat{u}$, $\hat{v}$ and $\hat{w}$) can be calculated based on the normalized observer vector (${\hat{u}}_o$):
 
@@ -128,7 +128,7 @@ Subsequently, the Rotation Matrix ($R$) of the coordinate system transformation 
 R=\left[\begin{matrix}\hat{u}\\\hat{v}\\\hat{w}\\\end{matrix}\right]=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]
 ```
 
-Applying the Rotation Matrix ($R$) to the normalized observer vector (${\hat{u}}_o$) gives the subsolar vector in the ENU coordinate system (${\hat{u}}_s\prime$) [^11]:
+Applying the Rotation Matrix ($R$) to the normalized observer vector (${\hat{u}}_o$) gives the subsolar vector in the ENU coordinate system (${\hat{u}}_s\prime$) [^6]:
 
 ```math
 {\hat{u}}_s\prime=R{\hat{u}}_s=\left[\begin{matrix}-\sin{(\lambda_o)}&\cos{(\lambda_o)}&0\\-\sin{(\phi_o)}\,\cos{(\lambda_o)}&-\sin{(\phi_o)}\,\sin{(\lambda_o)}&\cos{(\phi_o)}\\\cos{(\phi_o)}\,\cos{(\lambda_o)}&\cos{(\phi_o)}\,\sin{(\lambda_o)}&\sin{(\phi_o)}\\\end{matrix}\right]\left[\begin{matrix}\cos{(\phi_s)}\,\cos{(\lambda_s)}\\\cos{(\phi_s)}\,\sin{(\lambda_s)}\\\sin{(\phi_s)}\\\end{matrix}\right]
@@ -199,7 +199,7 @@ Therefore,
 \cos{\left(\alpha-\beta\right)}=\frac{BC}{AC}\cos{\left(\alpha\right)}
 ```
 
-In this case $\beta>\alpha$, so
+In this case, $\beta>\alpha$, so
 
 ```math
 \begin{aligned}
@@ -220,20 +220,10 @@ Finally, since $\beta$ equals the complementary angle of the blind target orient
 
 [^2]: “Amazon.com: Seeed Studio XIAO ESP32C3 - Tiny MCU Board with Wi-Fi and BLE for IoT Controlling Scenarios. Microcontroller with Battery Charge, Power Efficient, and Rich Interface for Tiny Machine Learning. … : Electronics.” Accessed: Feb. 27, 2026. [Online]. Available: https://www.amazon.com/gp/product/B0B94JZ2YF/?th=1
 
-[^3]: “Ecliptic coordinate system,” *Wikipedia*. Feb. 17, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308
+[^3]: J. H. Meeus, [*Astronomical algorithms*](https://dl.acm.org/doi/abs/10.5555/532892). Willmann-Bell, Incorporated, 1991.
 
-[^4]: “Declination,” *Wikipedia*. Feb. 18, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Declination&oldid=1276361201
+[^4]: T. Zhang, P. W. Stackhouse Jr, B. Macpherson, and J. C. Mikovitz, [“A solar azimuth formula that renders circumstantial treatment unnecessary without compromising mathematical rigor: Mathematical setup, application and extension of a formula based on the subsolar point and atan2 function,”](https://www.sciencedirect.com/science/article/pii/S0960148121004031) *Renew. Energy*, vol. 172, pp. 1333–1340, 2021.
 
-[^5]: “Subsolar point,” *Wikipedia*. Jan. 26, 2026. Accessed: Feb. 27, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706
+[^5]: R. Walraven, [“Calculating the position of the sun,”](https://www.sciencedirect.com/science/article/pii/0038092X7890155X) *Sol. Energy*, vol. 20, no. 5, pp. 393–397, 1978.
 
-[^6]: “Earth-centered, Earth-fixed coordinate system,” *Wikipedia*. Dec. 14, 2024. Accessed: Feb. 28, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982
-
-[^7]: T. Zhang, P. W. Stackhouse Jr, B. Macpherson, and J. C. Mikovitz, [“A solar azimuth formula that renders circumstantial treatment unnecessary without compromising mathematical rigor: Mathematical setup, application and extension of a formula based on the subsolar point and atan2 function,”](https://www.sciencedirect.com/science/article/pii/S0960148121004031) *Renew. Energy*, vol. 172, pp. 1333–1340, 2021.
-
-[^8]: “Horizontal coordinate system,” *Wikipedia*. Jan. 07, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Horizontal_coordinate_system&oldid=1267888614
-
-[^9]: R. Walraven, [“Calculating the position of the sun,”](https://www.sciencedirect.com/science/article/pii/0038092X7890155X) *Sol. Energy*, vol. 20, no. 5, pp. 393–397, 1978.
-
-[^10]: “Local tangent plane coordinates,” *Wikipedia*. Feb. 13, 2025. Accessed: Mar. 01, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Local_tangent_plane_coordinates&oldid=1275515987
-
-[^11]: “Geographic coordinate conversion,” *Wikipedia*. Dec. 22, 2025. Accessed: Mar. 04, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Geographic_coordinate_conversion&oldid=1328905303#From_ECEF_to_ENU
+[^6]: “Geographic coordinate conversion,” *Wikipedia*. Dec. 22, 2025. Accessed: Mar. 04, 2026. [Online]. Available: https://en.wikipedia.org/w/index.php?title=Geographic_coordinate_conversion&oldid=1328905303#From_ECEF_to_ENU
