@@ -60,20 +60,7 @@ sequenceDiagram
     participant github as GitHub Webpage
     participant server as Notion Server
     participant esp32 as ESP32
-    par User interference
-        opt
-        alt
-        user->>app: Click a button
-        else
-        user->>app: Set a specific angle
-        else
-        user->>app: Calibration
-        end
-        app->>server: Add command to Notion database
-        server-->>app: Return updated database
-        app-)user: Show updated database
-        end
-    and ESP32 Notion API
+    par ESP32 Notion API
         esp32->>esp32: Connect to WiFi
         esp32->>server: Get current status
         server-->>esp32: Return current status
@@ -111,6 +98,19 @@ sequenceDiagram
                 github->>app: Embed rendered <br>prevew
                 app-)user: Show updated preview
             end
+        end
+    and User interference
+        opt
+            alt
+                user->>app: Click a button
+                else
+                user->>app: Set a specific angle
+                else
+                user->>app: Calibration
+            end
+            app->>server: Add command to Notion database
+            server-->>app: Return updated database
+            app-)user: Show updated database
         end
     end
 ```
