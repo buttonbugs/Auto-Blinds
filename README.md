@@ -49,9 +49,7 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 - **Directory:** [local_debug/](local_debug/)
 
-## Sequence Diagrams
-
-### Internet Interaction
+## Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -59,44 +57,72 @@ sequenceDiagram
     participant app as Notion App
     participant github as GitHub Webpage
     participant server as Notion Server
-    participant esp32 as ESP32
+    participant esp32_notion as ESP32<br>request_handler.h
+    participant esp32_main as ESP32<br>main.cpp
+    participant esp32_calc as ESP32<br>sun_calculation.h
+    participant esp32_motor as ESP32<br>motor_controller.h
     par ESP32 Notion API
-        esp32->>esp32: Connect to WiFi
-        esp32->>server: Get current status
-        server-->>esp32: Return current status
-        esp32->esp32: Get blind angle <br> from current status
-        Note over esp32,server: ESP32 does not have <br>non-volatile storage to <br>store current blind angle, <br>so Notion Server is used <br>to store the angle when <br>the ESP32 is being reset.
-        esp32->>server: Get command list
-        server-->>esp32: Return command list
-        esp32->>esp32: Get latest command
+        esp32_main->>esp32_main: Connect to WiFi
+        esp32_main->>esp32_notion: Get current status
+        esp32_notion->>server: Get current status
+        server-->>esp32_notion: Return current status
+        esp32_notion->esp32_notion: Get blind angle <br> from current status
+        esp32_notion-->>esp32_main: Set "angle"
+        Note over server,esp32_main: ESP32 does not have non-volatile storage to <br>store current blind angle, so Notion Server is used <br>to store the angle when the ESP32 is being reset.
+        esp32_main->>esp32_notion: Get lastest command
+        esp32_notion->>server: Get command list
+        server-->>esp32_notion: Return command list
+        esp32_notion-->>esp32_notion: Get latest command
         opt
-            esp32-)server: Update lastest <br>command status
+            esp32_notion-)server: Update lastest <br>command status
         end
-        esp32->>esp32: Calculate current <br> position of the Sun
+        esp32_notion-->>esp32_main: Set "target" <br>and "auto_mode"
+        esp32_main->>esp32_calc: Get current <br> position of the Sun
+        esp32_calc->>esp32_calc: Calculate current <br> position of the Sun
+        esp32_calc-->>esp32_main: Set "sun_u", <br>"sun_v", "sun_w"
         alt If auto mode is on
-            esp32->>esp32: Calculate target
+            esp32_main->>esp32_calc: Get "target"
+            esp32_calc->>esp32_calc: Calculate "target"
+            esp32_calc-->>esp32_main: Set "target"
         end
-        esp32->>esp32: Initialize motor
-        loop
-            esp32->>server: Get command list
-            server-->>esp32: Return command list
-            esp32->>esp32: Get latest command
-            esp32-)server: Update lastest command status
-            opt If Notion App is open
-                server-)app: Send updated database
-                app-)user: Show updated database
+        esp32_notion->>esp32_motor: Initialize motor
+        par
+            loop main.cpp void loop()
+                esp32_main->>esp32_notion: Get lastest command
+                esp32_notion->>server: Get command list
+                server-->>esp32_notion: Return command list
+                esp32_notion-->>esp32_notion: Get latest command
+                esp32_notion-)server: Update lastest <br>command status
+                opt If Notion App is open
+                    server-)app: Send updated database
+                    app-)user: Show updated database
+                end
+                esp32_notion-->>esp32_main: Set "target" <br>and "auto_mode"
+                esp32_main->>esp32_calc: Get current <br> position of the Sun
+                esp32_calc->>esp32_calc: Calculate current <br> position of the Sun
+                esp32_calc-->>esp32_main: Set "sun_u", <br>"sun_v", "sun_w"
+                alt If auto mode is on
+                    esp32_main->>esp32_calc: Get "target"
+                    esp32_calc->>esp32_calc: Calculate "target"
+                    esp32_calc-->>esp32_main: Set "target"
+                end
+                esp32_main->>esp32_notion: Send current status <br>to Notion
+                esp32_notion-)server: Update current status
+                opt If Notion App is open
+                    server-)app: Send current status
+                    app->>github: Update current status
+                    github->>github: Render preview
+                    github->>app: Embed rendered <br>prevew
+                    app-)user: Show updated preview
+                end
             end
-            esp32->>esp32: Calculate current <br> position of the Sun
-            alt If auto mode is on
-                esp32->>esp32: Calculate target
-            end
-            esp32-)server: Update current status
-            opt If Notion App is open
-                server-)app: Send current status
-                app->>github: Update current status
-                github->>github: Render preview
-                github->>app: Embed rendered <br>prevew
-                app-)user: Show updated preview
+        and
+            loop motor_controller.h while (true)
+                esp32_motor->>esp32_main: Get "target"
+                esp32_main->>esp32_motor: Return "target"
+                esp32_motor->>esp32_motor: Calculate next <br>motor step
+                esp32_motor->>esp32_motor: set_motor_phase()
+                esp32_motor->>esp32_main: Return "angle"
             end
         end
     and User interference
