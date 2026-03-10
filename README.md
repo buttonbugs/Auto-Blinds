@@ -49,6 +49,72 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 - **Directory:** [local_debug/](local_debug/)
 
+## Sequence Diagrams
+
+### Internet Interaction
+
+```mermaid
+sequenceDiagram
+    actor user as User
+    participant app@{ "type" : "boundary" } as Notion App
+    participant github@{ "type" : "boundary" } as GitHub Webpage
+    participant server@{ "type" : "database" } as Notion Server
+    participant esp32 as ESP32
+    par User interference
+        opt
+        alt
+        user->>app: Click a button
+        else
+        user->>app: Set a specific angle
+        else
+        user->>app: Calibration
+        end
+        app->>server: Add command to Notion database
+        server-->>app: Return updated database
+        app-)user: Show updated database
+        end
+    and ESP32 Notion API
+        esp32->>esp32: Connect to WiFi
+        esp32->>server: Get current status
+        server-->>esp32: Return current status
+        esp32->esp32: Get blind angle <br> from current status
+        Note over esp32,server: ESP32 does not have <br>non-volatile storage to <br>store current blind angle, <br>so Notion Server is used <br>to store the angle when <br>the ESP32 is being reset.
+        esp32->>server: Get command list
+        server-->>esp32: Return command list
+        esp32->>esp32: Get latest command
+        opt
+            esp32-)server: Update lastest <br>command status
+        end
+        esp32->>esp32: Calculate current <br> position of the Sun
+        alt If auto mode is on
+            esp32->>esp32: Calculate target
+        end
+        esp32->>esp32: Initialize motor
+        loop
+            esp32->>server: Get command list
+            server-->>esp32: Return command list
+            esp32->>esp32: Get latest command
+            esp32-)server: Update lastest command status
+            opt If Notion App is open
+                server-)app: Send updated database
+                app-)user: Show updated database
+            end
+            esp32->>esp32: Calculate current <br> position of the Sun
+            alt If auto mode is on
+                esp32->>esp32: Calculate target
+            end
+            esp32-)server: Update current status
+            opt If Notion App is open
+                server-)app: Send current status
+                app->>github: Update current status
+                github->>github: Render preview
+                github->>app: Embed rendered <br>prevew
+                app-)user: Show updated preview
+            end
+        end
+    end
+```
+
 ## ENU Analemma Calculation
 
 [Ecliptic coordinate system](https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308) is used to calculate the Sun’s [declination](https://en.wikipedia.org/w/index.php?title=Declination&oldid=1276361201) ($\delta$), where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system. Notably, Jean Meeus’s Algorithm [^3] is used to calculate the approximate time of the vernal equinox in this project (also see [local_debug/analemma_ENU.py](/local_debug/analemma_ENU.py#L10-L57)).
