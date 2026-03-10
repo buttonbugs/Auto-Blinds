@@ -55,10 +55,10 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 ```mermaid
 sequenceDiagram
-    actor user as User
-    participant app@{ "type" : "boundary" } as Notion App
-    participant github@{ "type" : "boundary" } as GitHub Webpage
-    participant server@{ "type" : "database" } as Notion Server
+    participant user as User
+    participant app as Notion App
+    participant github as GitHub Webpage
+    participant server as Notion Server
     participant esp32 as ESP32
     par User interference
         opt
