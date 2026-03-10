@@ -86,8 +86,8 @@ sequenceDiagram
             esp32_calc-->>esp32_main: Set "target"
         end
         esp32_notion->>esp32_motor: Initialize motor
-        par
-            loop main.cpp void loop()
+        par ESP32 parallel thread: main.cpp
+            loop void loop() in main.cpp
                 esp32_main->>esp32_notion: Get lastest command
                 esp32_notion->>server: Get command list
                 server-->>esp32_notion: Return command list
@@ -116,8 +116,8 @@ sequenceDiagram
                     app-)user: Show updated preview
                 end
             end
-        and
-            loop motor_controller.h while (true)
+        and ESP32 parallel thread: motor_controller.h
+            loop while (true) in motor_controller.h
                 esp32_motor->>esp32_main: Get "target"
                 esp32_main->>esp32_motor: Return "target"
                 esp32_motor->>esp32_motor: Calculate next <br>motor step
