@@ -49,6 +49,16 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 - **Directory:** [local_debug/](local_debug/)
 
+## 3D Model
+
+<p align="center">
+    <img src="README/3D_model.gif" alt="Wiring" width="72%"/>
+    <br>
+    <sub>Fig. 3. Auto Blinds 3D model</sub>
+</p>
+
+Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
+
 ## Wiring
 
 <p align="center">
