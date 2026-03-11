@@ -16,23 +16,6 @@ void set_motor_phase(int phase) {
     digitalWrite(MOTOR_PIN_4, phase == 3);
 }
 
-void motor_reactivate(int phase) {
-    for (int amplitude = 0; amplitude <= 4; amplitude++) {
-        for (int i = 1; i < amplitude; i++) {
-            set_motor_phase((phase + i + 4) % 4);
-            vTaskDelay(pdMS_TO_TICKS(step_duration_ms));
-        }
-        for (int i = amplitude; i > -amplitude; i--) {
-            set_motor_phase((phase + i + 4) % 4);
-            vTaskDelay(pdMS_TO_TICKS(step_duration_ms));
-        }
-        for (int i = -amplitude; i <=0; i++) {
-            set_motor_phase((phase + i + 4) % 4);
-            vTaskDelay(pdMS_TO_TICKS(step_duration_ms));
-        }
-    }
-}
-
 void set_interval(void *pvParameters) {
     set_motor_phase(current_step % 4);
     while (true) {
@@ -49,14 +32,8 @@ void set_interval(void *pvParameters) {
             set_motor_phase(current_step % 4);
 
         } else {
-            // (Optional) Turn off all LEDs on the motor driver
-            if (millis() % (motor_reactivation_interval_s * 1000) <= step_duration_ms) {
-                // Reactivate the motor (eliminate the deviation caused by motor deactivation)
-                motor_reactivate(current_step);
-            } else {
-                // Deactivate the motor (turn off the LEDs)
-                set_motor_phase(5);
-            }
+            // Deactivate the motor (turn off the LEDs)
+            set_motor_phase(5);
         }
 
         // Update angle so that it can be synced to Notion preview

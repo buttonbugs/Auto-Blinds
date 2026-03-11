@@ -223,7 +223,7 @@ double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
             if (alpha > radians(building_angle_deg)) { // when the sun rises from the top of the building in front of the blinds
                 double beta = acos(blind_spacing * cos(alpha) / blind_width) + alpha;
                 double theta = PI - beta;
-                return _max(degrees(theta), 90.0);
+                return _max(degrees(theta), 70.0);
             }
         }
     }

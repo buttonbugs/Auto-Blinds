@@ -19,7 +19,6 @@
 #define total_step 46080            // Total steps for the blinds to turn 180 degrees
 #define step_duration_ms 5          // Interval for toggling motor step in milliseconds
 #define building_angle_deg 11.5     // The altitude angle of the top of the building in front of the blinds in degrees
-#define motor_reactivation_interval_s 60
 
 // blind_width and blind_spacing can be in any unit you want (e.g. mm, inches, meters),
 // but they should be in the same unit.
