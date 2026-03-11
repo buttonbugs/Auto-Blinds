@@ -7,16 +7,16 @@
 ### Auto Mode
 
 <p align="center">
-  <br>
-  <sub>Fig. 1. The blinds adjusts the orientation automatically based on time and the Sun's position.</sub>
+    <br>
+    <sub>Fig. 1. The blinds adjusts the orientation automatically based on time and the Sun's position.</sub>
 </p>
 
 ### Manual Mode
 
 <p align="center">
-  <img src="README/preview_1.gif" alt="Preiew Image" width="72%"/>
-  <br>
-  <sub>Fig. 2. The blinds are controlled on phones.</sub>
+    <img src="README/preview_1.gif" alt="Preiew Image" width="72%"/>
+    <br>
+    <sub>Fig. 2. The blinds are controlled on phones.</sub>
 </p>
 
 ## Background and Motivation
@@ -51,7 +51,11 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 ## Wiring
 
-![Wiring](README/wiring.png)
+<p align="center">
+    <img src="README/wiring.png" alt="Wiring" width="72%"/>
+    <br>
+    <sub>Fig. 3. Auto Blinds wiring diagram</sub>
+</p>
 
 ## Sequence Diagram
 
@@ -281,9 +285,9 @@ After the Sun rises from the top of the building, the blind target orientation (
 For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 4.
 
 <p align="center">
-  <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
-  <br>
-  <sub>Fig. 4. A vertical cross section of the blinds and the sunlight.</sub>
+    <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
+    <br>
+    <sub>Fig. 4. A vertical cross section of the blinds and the sunlight.</sub>
 </p>
 
 In Fig. 4, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
