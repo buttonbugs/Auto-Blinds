@@ -49,6 +49,10 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 - **Directory:** [local_debug/](local_debug/)
 
+## Wiring
+
+![Wiring](README/wiring.png)
+
 ## Sequence Diagram
 
 ```mermaid
