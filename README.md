@@ -64,7 +64,7 @@ Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
 <p align="center">
     <img src="README/wiring.png" alt="Wiring" width="72%"/>
     <br>
-    <sub>Fig. 3. Auto Blinds wiring diagram</sub>
+    <sub>Fig. 4. Auto Blinds wiring diagram</sub>
 </p>
 
 ## Sequence Diagram
@@ -292,15 +292,15 @@ a_s\prime =
 
 After the Sun rises from the top of the building, the blind target orientation ($θ$) is calculated to block the sunlight.
 
-For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 4.
+For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 5.
 
 <p align="center">
     <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
     <br>
-    <sub>Fig. 4. A vertical cross section of the blinds and the sunlight.</sub>
+    <sub>Fig. 5. A vertical cross section of the blinds and the sunlight.</sub>
 </p>
 
-In Fig. 4, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
+In Fig. 5, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
 
 According to the geometric relations, we have
 
