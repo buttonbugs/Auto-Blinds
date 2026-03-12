@@ -218,14 +218,23 @@ double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
 
     } else {
         // Check if the sun is in front of the blinds
-        if (sun_u > 0 && sun_w > 0) {
+        if (sun_w > 0) {
             double alpha = atan(sun_w / sun_u);
-            if (alpha > radians(building_angle_deg)) { // when the sun rises from the top of the building in front of the blinds
-                double beta = acos(blind_spacing * cos(alpha) / blind_width) + alpha;
-                double theta = PI - beta;
-                return _max(degrees(theta), 70.0);
+            if (sun_u > 0) {
+                if (alpha > radians(building_angle_deg)) { // when the sun rises from the top of the building in front of the blinds
+                    double beta = acos(blind_spacing * cos(alpha) / blind_width) + alpha;
+                    double theta = PI - beta;
+                    return _max(degrees(theta), 70.0);
+                }
+            } else {
+                Serial.println(alpha);
+                if (-alpha > radians(building_window_min_deg) && -alpha < radians(building_window_max_deg)) {
+                    return 135.0;
+                }
             }
+            
         }
+        
     }
     return 90.0;
 }
