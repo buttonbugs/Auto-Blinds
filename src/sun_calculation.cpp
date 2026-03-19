@@ -229,7 +229,7 @@ double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
             } else {
                 Serial.println(alpha);
                 if (-alpha > radians(building_window_min_deg) && -alpha < radians(building_window_max_deg)) {
-                    return 135.0;
+                    return 150.0;
                 }
             }
             
