@@ -21,9 +21,17 @@
 
 ## Background and Motivation
 
-...
+In my dorm room, my desk and a set of bunk beds are positioned next to a window fitted with east-facing horizontal blinds. The blinds are adjusted using an acrylic hexagonal prism wand. For clarity, I define 0° as fully tilted down, 90° as horizontal (maximizing outward visibility), and 180° as fully tilted up (minimizing incoming sunlight).
+
+A nearby building partially affects lighting conditions. Its roof forms an altitude angle of approximately 12° relative to the window, which blocks sunlight when the Sun’s altitude is below this threshold. However, when the Sun rises above 12°, direct sunlight enters the room unless the blinds are tilted upward. This makes it difficult to work comfortably at my desk. At night, exterior lighting shines upward into the room, reflecting off the ceiling. In this case, the blinds must be tilted downward to block the light and maintain a suitable sleeping environment. During most of the daytime, however, both my roommate and I prefer the blinds to remain at 90° to allow visibility outside.
+
+A practical limitation arises from the bunk bed design: the upper bunk obstructs most of the wand, leaving only about 0.5 inches (1.3 cm) accessible unless I climb onto the bed. Since the furniture cannot be rearranged, manual adjustment is inconvenient. This motivated the development of a system that enables both autonomous operation (Auto Mode) and remote manual control (Manual Mode).
+
+In Auto Mode, a microcontroller retrieves the current date and time from the Internet and calculates the Sun’s position to determine the optimal blind angle. The system also incorporates a simple daily routine, automatically setting the blinds to 0° during sleep hours and 90° upon waking. In Manual Mode, users can remotely set the blind angle or switch between modes via a mobile interface.
 
 ## Basic Information
+
+To support reliable network connectivity, particularly with WPA2-Enterprise (university Wi-Fi), an ESP32 microcontroller is used. A 28BYJ-48 stepper motor provides sufficient torque and precise control for rotating the wand. Notion, via its API, serves as an intermediary “server,” enabling communication between mobile devices and the ESP32.
 
 ### Electronics
 
