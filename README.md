@@ -49,7 +49,7 @@ In Auto Mode, a microcontroller retrieves the current date and time from the Int
 
 ## Basic Information
 
-To support reliable network connectivity, particularly with WPA2-Enterprise (university Wi-Fi), an ESP32 microcontroller is used. A 28BYJ-48 stepper motor provides sufficient torque and precise control for rotating the wand. Notion, via its API, serves as an intermediary “server,” enabling communication between mobile devices and the ESP32.
+To support reliable network connectivity, particularly with WPA2-Enterprise (university Wi-Fi), an ESP32 microcontroller is used. A 28BYJ-48 stepper motor provides sufficient torque and precise control for rotating the wand. Notion, via its API, serves as an intermediary “server”, enabling communication between mobile devices and the ESP32.
 
 ### Electronics
 
