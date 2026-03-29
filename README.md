@@ -23,9 +23,27 @@
 
 In my dorm room, my desk and a set of bunk beds are positioned next to a window fitted with east-facing horizontal blinds. The blinds are adjusted using an acrylic hexagonal prism wand. For clarity, I define 0° as fully tilted down, 90° as horizontal (maximizing outward visibility), and 180° as fully tilted up (minimizing incoming sunlight).
 
+<p align="center">
+    <img src="README/background_1_tilting_angle.svg" alt="Auto Blinds angle definition" width="72%"/>
+    <br>
+    <sub>Fig. 3. Auto Blinds angle definition. (a) fully tilted down - 0°. (b) horizontal - 90°. (c) fully tilted up - 180°</sub>
+</p>
+
 A nearby building partially affects lighting conditions. Its roof forms an altitude angle of approximately 12° relative to the window, which blocks sunlight when the Sun’s altitude is below this threshold. However, when the Sun rises above 12°, direct sunlight enters the room unless the blinds are tilted upward. This makes it difficult to work comfortably at my desk. At night, exterior lighting shines upward into the room, reflecting off the ceiling. In this case, the blinds must be tilted downward to block the light and maintain a suitable sleeping environment. During most of the daytime, however, both my roommate and I prefer the blinds to remain at 90° to allow visibility outside.
 
+<p align="center">
+    <img src="README/background_2_sun_position.svg" alt="Altitude angle of the building" width="72%"/>
+    <br>
+    <sub>Fig. 4. (a) 12° altitude angle of the building. (b)(c) Different positions of the Sun. (d) Exterior lighting</sub>
+</p>
+
 A practical limitation arises from the bunk bed design: the upper bunk obstructs most of the wand, leaving only about 0.5 inches (1.3 cm) accessible unless I climb onto the bed. Since the furniture cannot be rearranged, manual adjustment is inconvenient. This motivated the development of a system that enables both autonomous operation (Auto Mode) and remote manual control (Manual Mode).
+
+<p align="center">
+    <img src="README/background_3_short_wand.png" alt="The wand of the blinds" width="72%"/>
+    <br>
+    <sub>Fig. 5. The wand of the blinds.</sub>
+</p>
 
 In Auto Mode, a microcontroller retrieves the current date and time from the Internet and calculates the Sun’s position to determine the optimal blind angle. The system also incorporates a simple daily routine, automatically setting the blinds to 0° during sleep hours and 90° upon waking. In Manual Mode, users can remotely set the blind angle or switch between modes via a mobile interface.
 
@@ -64,7 +82,7 @@ Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
 <p align="center">
     <img src="README/3D_model.gif" alt="Wiring" width="72%"/>
     <br>
-    <sub>Fig. 3. Auto Blinds 3D model</sub>
+    <sub>Fig. 6. Auto Blinds 3D model</sub>
 </p>
 
 ## Wiring
@@ -72,7 +90,7 @@ Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
 <p align="center">
     <img src="README/wiring.png" alt="Wiring" width="72%"/>
     <br>
-    <sub>Fig. 4. Auto Blinds wiring diagram</sub>
+    <sub>Fig. 7. Auto Blinds wiring diagram</sub>
 </p>
 
 ## Sequence Diagram
@@ -300,15 +318,15 @@ a_s\prime =
 
 After the Sun rises from the top of the building, the blind target orientation ($θ$) is calculated to block the sunlight.
 
-For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 5.
+For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 8.
 
 <p align="center">
     <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
     <br>
-    <sub>Fig. 5. A vertical cross section of the blinds and the sunlight.</sub>
+    <sub>Fig. 8. A vertical cross section of the blinds and the sunlight.</sub>
 </p>
 
-In Fig. 5, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
+In Fig. 8, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
 
 According to the geometric relations, we have
 
