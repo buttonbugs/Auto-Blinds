@@ -221,7 +221,10 @@ double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
         if (sun_w > 0) {
             double alpha = atan(sun_w / sun_u);
             if (sun_u > 0) {
-                if (alpha > radians(building_angle_deg)) { // when the sun rises from the top of the building in front of the blinds
+                if (
+                    alpha > radians(building_angle_deg) ||  // when the sun rises from the top of the building in front of the blinds
+                    sun_v > 0                               // There is no building on the northeast
+                ) {
                     double beta = acos(blind_spacing * cos(alpha) / blind_width) + alpha;
                     double theta = PI - beta;
                     return _max(degrees(theta), 70.0);
