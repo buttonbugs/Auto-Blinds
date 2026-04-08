@@ -229,13 +229,7 @@ double get_auto_mode_target(double sun_u, double sun_v, double sun_w) {
                     double theta = PI - beta;
                     return _max(degrees(theta), 70.0);
                 }
-            } else {
-                Serial.println(alpha);
-                if (-alpha > radians(building_window_min_deg) && -alpha < radians(building_window_max_deg)) {
-                    return 150.0;
-                }
             }
-            
         }
         
     }
