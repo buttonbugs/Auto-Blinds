@@ -125,6 +125,7 @@ function render_sun() {
 
     // Render the sun position text
     if (width > sun_text_visible_width) {
+        const sun_atan = Math.atan2(sun_w, sun_u) * 180 / Math.PI;
         ctx.textAlign = "right";
         ctx.textBaseline = "top";
         ctx.font = "10px monospace";
@@ -133,6 +134,7 @@ function render_sun() {
         ctx.fillText(sun_u.toFixed(15), width, BLIND_START.y - roof_height + 0 * sun_text_spacing + sun_text_y_offset);
         ctx.fillText(sun_v.toFixed(15), width, BLIND_START.y - roof_height + 1 * sun_text_spacing + sun_text_y_offset);
         ctx.fillText(sun_w.toFixed(15), width, BLIND_START.y - roof_height + 2 * sun_text_spacing + sun_text_y_offset);
+        ctx.fillText(sun_atan.toFixed(14), width, BLIND_START.y - roof_height + 3 * sun_text_spacing + sun_text_y_offset);
     }
 
     if (sun_w <= 0 && sun_u < 0) {return;}    // The sun shouldn't be rendered from evening to midnight
