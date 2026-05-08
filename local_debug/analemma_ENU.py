@@ -160,6 +160,7 @@ def main():
     print(subsolar_longitude)
     print(subsolar_vector)
     print(subsolar_vector_ENU)
+    print(math.atan2(subsolar_vector_ENU[2],subsolar_vector_ENU[0]) * 180 / math.pi)
 
 if __name__ == "__main__":
     main()
