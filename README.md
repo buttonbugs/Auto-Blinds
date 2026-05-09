@@ -204,7 +204,7 @@ and
 
 $${\hat{n}}_{NCP}=\left[
 \begin{matrix}0\\
-\sin{\\,\varepsilon}\\
+-\sin{\\,\varepsilon}\\
 \cos{\\,\varepsilon}\\
 \end{matrix}
 \right],
@@ -217,8 +217,8 @@ $$
 \sin{\\,\delta}&=\sin{\left[\frac{\pi}{2}-\angle\left(-{\hat{r}}_{SE},{\hat{n}}_{NCP}\right)\right]}\\
 &=\cos{\angle(-{\hat{r}}_{SE},{\hat{n}}_{NCP})}\\
 &=\frac{{\hat{n}}_{NCP}\bullet(-{\hat{r}}_{SE})}{\left|{\hat{n}}_{NCP}\right|\left|{\hat{r}}_{SE}\right|}\\
-&=-\left[\begin{matrix} \cos{\\,\lambda_\odot}\\\\ \sin{\\,\lambda_\odot}\\\\0\end{matrix}\right]\left[\begin{matrix}0\\\\ \sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
-&=-\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon}.
+&=-\left[\begin{matrix} \cos{\\,\lambda_\odot}\\\\ \sin{\\,\lambda_\odot}\\\\0\end{matrix}\right]\left[\begin{matrix}0\\\\ -\sin{\\,\varepsilon}\\\\ \cos{\\,\varepsilon}\end{matrix}\right]\\
+&=\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon}.
 \end{aligned}
 $$
 
@@ -236,7 +236,7 @@ where:
 
 Since the [subsolar latitude](https://en.wikipedia.org/w/index.php?title=Subsolar_point&oldid=1334981706) ($\phi_s$) is the same as the Sun’s declination ($\delta$), we have
 
-$$\phi_s=\delta=-\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
+$$\phi_s=\delta=\arcsin{(\sin{\\,\lambda_\odot}\\,\sin{\\,\varepsilon})}$$
 
 In the [Earth-centered, Earth-fixed coordinate system](https://en.wikipedia.org/w/index.php?title=Earth-centered,_Earth-fixed_coordinate_system&oldid=1263086982) (ECEF), the subsolar vector (${\hat{u}}_s$) can be calculated as:
 
