@@ -142,7 +142,7 @@ void get_sun_position_ENU(double * sun_u, double * sun_v, double * sun_w) {
     double ecliptic_longitude = 2 * PI * get_percentage_of_the_utc_year();
 
     // Caculate the Sun’s declination
-    double sin_sun_declination = - sin(ecliptic_longitude) * sin(EARTH_OBLIQUITY);
+    double sin_sun_declination = sin(ecliptic_longitude) * sin(radians(EARTH_OBLIQUITY));
 
     /* Earth-centered, Earth-fixed coordinate system */
     // Calculate the subsolar point and the subsolar vector

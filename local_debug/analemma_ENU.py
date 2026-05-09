@@ -107,8 +107,8 @@ def main():
     ])
     unit_vector_north_celestial_pole = np.array([
         0,
-        math.sin(EARTH_OBLIQUITY),
-        math.cos(EARTH_OBLIQUITY)
+        -math.sin(EARTH_OBLIQUITY * math.pi / 180.0),
+        math.cos(EARTH_OBLIQUITY * math.pi / 180.0)
     ])
 
     # Caculate the Sun’s declination
