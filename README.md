@@ -18,7 +18,9 @@
 Auto Blinds provide remote accessibility via smartphone from any distance. Fig. 2 illustrates the Auto Blinds (left) alongside a screen recording of the control interface (right). Users may utilize the on-screen buttons to adjust the blinds to preferred orientations; meanwhile, the dynamic animation provides a real-time preview of the blinds' status, orientation, and the current position of the sun.
 
 <p align="center">
-    <img src="README/manual_mode.gif" alt="Auto Blinds angle definition" width="72%"/>
+    <a href="https://www.youtube.com/watch?v=zLtPkMw64kk">
+        <img src="README/manual_mode.gif" alt="Auto Blinds angle definition" width="72%"/>
+    </a>
     <br>
     <sub>Fig. 2. The Auto Blinds (left) alongside a screen recording of the control interface (right).</sub>
 </p>
