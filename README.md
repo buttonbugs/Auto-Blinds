@@ -108,8 +108,6 @@ The wiring diagram (Fig. 7) for this project is relatively straightforward.
 - **GPIO5 (D3)** -> IN3
 - **GPIO6 (D4)** -> IN2
 - **GPIO7 (D5)** -> IN1
-- **5V** -> +
-- **GND** -> -
 
 <p align="center">
     <img src="README/wiring.png" alt="Wiring" width="72%"/>
@@ -119,7 +117,7 @@ The wiring diagram (Fig. 7) for this project is relatively straightforward.
 
 ## Network Communication
 
-Fig. 8 illustrates the network architecture. The ESP32 retrieves commands from the Notion server while concurrently transmitting the blinds' status and the Sun's position. Simultaneously, the Notion app interface synchronizes with the server to reflect real-time updates. Upon user interaction, commands are transmitted from the interface directly to the Notion server.
+Fig. 8 illustrates the network architecture. The ESP32 retrieves commands from the Notion server while concurrently transmitting the blinds' status and the Sun's position. Simultaneously, the Notion app interface synchronizes with the server to reflect real-time updates. Upon user interaction, commands are transmitted from the interface directly to the Notion server. The infrastructure facilitates multi-user concurrency, enabling several individuals to manage the Auto Blinds at the same time.
 
 <p align="center">
     <img src="README/network_brief_illustration_a.svg" alt="Network Communication" width="72%"/>
