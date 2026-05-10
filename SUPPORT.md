@@ -8,7 +8,7 @@ This document includes the usage of the code.
 
 A header file `secret.h` is necessary to run the code without error. This file includes sensitive information, so please don't forget to add it to `.gitignore` if you are using a git repository.
 
-1. Create `secret.h` in either `/src` or `/include` directory.
+1. Create `secret.h` in either [\src](\src) or [/include](/include) directory.
 
 2. Add the following code to your `secret.h`. Please note that this is a sample code. You need to adjust it according to your own situation.
 
