@@ -40,7 +40,7 @@ A nearby building partially affects lighting conditions. Its roof forms an altit
 <p align="center">
     <img src="README/background_2_sun_position.svg" alt="Altitude angle of the building" width="72%"/>
     <br>
-    <sub>Fig. 4. (a) 12° altitude angle of the building. (b-c) Different positions of the Sun. (d) Exterior lighting</sub>
+    <sub>Fig. 4. (a) 12° altitude angle of the building. (b)(c) Different positions of the Sun. (d) Exterior lighting.</sub>
 </p>
 
 A practical limitation arises from the bunk bed design: the upper bunk obstructs most of the wand, leaving only about 0.5 inches (1.3 cm) accessible unless I climb onto the bed (Fig. 5). Since the furniture cannot be rearranged, manual adjustment is inconvenient. This motivated the development of a system that enables both autonomous operation (Auto Mode) and remote manual control (Manual Mode).
@@ -117,7 +117,15 @@ The wiring diagram (Fig. 7) for this project is relatively straightforward.
     <sub>Fig. 7. Auto Blinds wiring diagram</sub>
 </p>
 
-## Sequence Diagram
+## Network Communication
+
+<p align="center">
+    <img src="README/network_brief_illustration.svg" alt="Network Communication" width="72%"/>
+    <br>
+    <sub>Fig. 8. The network diagram for Auto Blinds.</sub>
+</p>
+
+### Sequence Diagram
 
 ```mermaid
 sequenceDiagram
@@ -208,6 +216,10 @@ sequenceDiagram
         end
     end
 ```
+
+<p align="center">
+    <sub>Fig. 9. The sequence diagram of Auto Blinds.</sub>
+</p>
 
 ## ENU Analemma Calculation
 
@@ -342,15 +354,15 @@ a_s\prime =
 
 After the Sun rises from the top of the building, the blind target orientation ($θ$) is calculated to block the sunlight.
 
-For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 8.
+For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 10.
 
 <p align="center">
     <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
     <br>
-    <sub>Fig. 8. A vertical cross section of the blinds and the sunlight.</sub>
+    <sub>Fig. 10. A vertical cross section of the blinds and the sunlight.</sub>
 </p>
 
-In Fig. 8, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
+In Fig. 10, The sunlight is represented by the red line with an arrow, and the cross section of the blinds is represented by the tilted black lines. $AC$ and $BC$ are constants, where $AC$ is the width of a blind and $BC$ is the vertical distance between two blinds.
 
 According to the geometric relations, we have
 
