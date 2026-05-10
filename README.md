@@ -2,6 +2,8 @@
 
 **Auto Blinds** is an automation project that dynamically adjusts blind orientation based on the Sun's position ([Auto Mode](#auto-mode)). It also includes a mobile interface for convenient remote manual control ([Manual Mode](#manual-mode)).
 
+<sub>*Note:* This `README.md` file includes the introduction of the project. For how to use the code, please visit [SUPPORT.md](/SUPPORT.md).</sub>
+
 ## Preview
 
 ### Auto Mode
