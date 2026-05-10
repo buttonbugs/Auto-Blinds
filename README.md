@@ -19,7 +19,7 @@ Auto Blinds provides remote accessibility via smartphone from any distance. Fig.
 
 <p align="center">
     <a href="https://www.youtube.com/watch?v=zLtPkMw64kk">
-        <img src="README/manual_mode.gif" alt="Auto Blinds angle definition" width="72%"/>
+        <img src="/README/manual_mode.gif" alt="Auto Blinds angle definition" width="72%"/>
     </a>
     <br>
     <sub>Fig. 2. The Auto Blinds (left) alongside a screen recording of the control interface (right).</sub>
@@ -30,7 +30,7 @@ Auto Blinds provides remote accessibility via smartphone from any distance. Fig.
 In my dorm room, my desk and a set of bunk beds are positioned next to a window fitted with east-facing horizontal blinds. The blinds are adjusted using an acrylic hexagonal prism wand. For clarity (Fig. 3), I define 0° as fully tilted down, 90° as horizontal (maximizing outward visibility), and 180° as fully tilted up (minimizing incoming sunlight).
 
 <p align="center">
-    <img src="README/background_1_tilting_angle.svg" alt="Auto Blinds angle definition" width="72%"/>
+    <img src="/README/background_1_tilting_angle.svg" alt="Auto Blinds angle definition" width="72%"/>
     <br>
     <sub>Fig. 3. Auto Blinds angle definition. (a) fully tilted down - 0°. (b) horizontal - 90°. (c) fully tilted up - 180°</sub>
 </p>
@@ -38,7 +38,7 @@ In my dorm room, my desk and a set of bunk beds are positioned next to a window 
 A nearby building partially affects lighting conditions. Its roof forms an altitude angle of approximately 12° relative to the window (Fig. 4. (a)), which blocks sunlight when the Sun’s altitude is below this threshold (Fig. 4. (b)). However, when the Sun rises above 12°, direct sunlight enters the room unless the blinds are tilted upward (Fig. 4. (c)). This makes it difficult to work comfortably at my desk. At night, exterior lighting shines upward into the room, reflecting off the ceiling (Fig. 4. (d)). In this case, the blinds must be tilted downward to block the light and maintain a suitable sleeping environment. During most of the daytime, however, both my roommate and I prefer the blinds to remain at 90° to allow visibility outside.
 
 <p align="center">
-    <img src="README/background_2_sun_position.svg" alt="Altitude angle of the building" width="72%"/>
+    <img src="/README/background_2_sun_position.svg" alt="Altitude angle of the building" width="72%"/>
     <br>
     <sub>Fig. 4. (a) 12° altitude angle of the building. (b)(c) Different positions of the Sun. (d) Exterior lighting.</sub>
 </p>
@@ -46,7 +46,7 @@ A nearby building partially affects lighting conditions. Its roof forms an altit
 A practical limitation arises from the bunk bed design: the upper bunk obstructs most of the wand, leaving only about 0.5 inches (1.3 cm) accessible unless I climb onto the bed (Fig. 5). Since the furniture cannot be rearranged, manual adjustment is inconvenient. This motivated the development of a system that enables both autonomous operation (Auto Mode) and remote manual control (Manual Mode).
 
 <p align="center">
-    <img src="README/background_3_short_wand.png" alt="The wand of the blinds" width="72%"/>
+    <img src="/README/background_3_short_wand.png" alt="The wand of the blinds" width="72%"/>
     <br>
     <sub>Fig. 5. The wand of the blinds.</sub>
 </p>
@@ -95,14 +95,14 @@ This 3D model (Fig. 6) illustrates the motorized blind system and its mounting a
 Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
 
 <p align="center">
-    <img src="README/3D_model.gif" alt="Wiring" width="72%"/>
+    <img src="/README/3D_model.gif" alt="Wiring" width="72%"/>
     <br>
     <sub>Fig. 6. Auto Blinds 3D model</sub>
 </p>
 
 ## Wiring
 
-The wiring diagram (Fig. 7) for this project is relatively straightforward.
+The wiring diagram (Fig. 7) of this project is relatively straightforward.
 
 - **GPIO4 (D2)** -> IN4
 - **GPIO5 (D3)** -> IN3
@@ -110,7 +110,7 @@ The wiring diagram (Fig. 7) for this project is relatively straightforward.
 - **GPIO7 (D5)** -> IN1
 
 <p align="center">
-    <img src="README/wiring.png" alt="Wiring" width="72%"/>
+    <img src="/README/wiring.png" alt="Wiring" width="72%"/>
     <br>
     <sub>Fig. 7. Auto Blinds wiring diagram</sub>
 </p>
@@ -120,8 +120,8 @@ The wiring diagram (Fig. 7) for this project is relatively straightforward.
 Fig. 8 illustrates the network architecture. The ESP32 retrieves commands from the Notion server while concurrently transmitting the blinds' status and the Sun's position. Simultaneously, the Notion app interface synchronizes with the server to reflect real-time updates. Upon user interaction, commands are transmitted from the interface directly to the Notion server. The infrastructure facilitates multi-user concurrency, enabling several individuals to manage the Auto Blinds at the same time.
 
 <p align="center">
-    <img src="README/network_brief_illustration_a.svg" alt="Network Communication" width="72%"/>
-    <img src="README/network_brief_illustration_b.svg" alt="Network Communication" width="72%"/>
+    <img src="/README/network_brief_illustration_a.svg" alt="Network Communication" width="72%"/>
+    <img src="/README/network_brief_illustration_b.svg" alt="Network Communication" width="72%"/>
     <br>
     <sub>Fig. 8. Network architecture for Auto Blinds. (a) Single-user configuration; (b) Multi-user configuration.</sub>
 </p>
@@ -358,7 +358,7 @@ After the Sun rises from the top of the building, the blind target orientation (
 For simplicity, we let $α$ equal the solar altitude angle ($a_s'$) in the uw-plane and $β$ equal the complementary angle of the blind target orientation ($θ$) in Fig. 10.
 
 <p align="center">
-    <img src="README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
+    <img src="/README/target_calculation.gif" alt="Target Calculation Image" width="72%"/>
     <br>
     <sub>Fig. 10. A vertical cross section of the blinds and the sunlight.</sub>
 </p>
