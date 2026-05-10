@@ -102,6 +102,15 @@ Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
 
 ## Wiring
 
+The wiring diagram (Fig. 7) for this project is relatively straightforward.
+
+- **GPIO4 (D2)** -> IN4
+- **GPIO5 (D3)** -> IN3
+- **GPIO6 (D4)** -> IN2
+- **GPIO7 (D5)** -> IN1
+- **5V** -> +
+- **GND** -> -
+
 <p align="center">
     <img src="README/wiring.png" alt="Wiring" width="72%"/>
     <br>
