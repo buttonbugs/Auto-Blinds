@@ -79,6 +79,15 @@ Note: A Notion page, where there are buttons and Notion database, is used as the
 
 ## 3D Model
 
+This 3D model (Fig. 6) illustrates the motorized blind system and its mounting assembly:
+
+- **Blue Frame:** 3D-printed housing, secured to the bunk frame with **M6x16mm** bolts.
+- **Stepper Motor:** A 28BYJ-48 motor (hidden) fastened using **M4x8mm** screws.
+- **Motor Driver:** The green ULN2003 module, secured with **M2x12mm** screws.
+- **Gearing:** Two blue 3D-printed gears (**10:24** ratio) used to increase output torque.
+- **Wand:** A transparent hexagonal prism that controls the blinds.
+- **Mounting:** Attaches directly to the vertical white metal frame of the upper bunk.
+
 Click [here](3D_models/auto_blinds_v3.step) to download the 3D model.
 
 <p align="center">
@@ -189,7 +198,7 @@ sequenceDiagram
 
 ## ENU Analemma Calculation
 
-[Ecliptic coordinate system](https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308) is used to calculate the Sun’s [declination](https://en.wikipedia.org/w/index.php?title=Declination&oldid=1276361201) ($\delta$), where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system. Notably, Jean Meeus’s Algorithm [^3] is used to calculate the approximate time of the vernal equinox in this project (also see [local_debug/analemma_ENU.py](/local_debug/analemma_ENU.py#L10-L57)).
+Firstly, the [ecliptic coordinate system](https://en.wikipedia.org/w/index.php?title=Ecliptic_coordinate_system&oldid=1338843308) is used to calculate the Sun’s [declination](https://en.wikipedia.org/w/index.php?title=Declination&oldid=1276361201) ($\delta$), where the origin is the center of the Sun, $X$ points to the vernal equinox, $Z$ is the North Ecliptic Pole, and $Y$ completes the right-handed system. Notably, Jean Meeus’s Algorithm [^3] is used to calculate the approximate time of the vernal equinox in this project (also see [local_debug/analemma_ENU.py](/local_debug/analemma_ENU.py#L10-L57)).
 
 Since
 
