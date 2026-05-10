@@ -15,9 +15,9 @@
 
 ### Manual Mode
 
-![](/README/manual_mode.mp4)
-
 <p align="center">
+    <img src="README/manual_mode.gif" alt="Auto Blinds angle definition" width="72%"/>
+    <br>
     <sub>Fig. 2. The blinds are controlled on phones.</sub>
 </p>
 
